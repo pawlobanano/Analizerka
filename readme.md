@@ -2,8 +2,6 @@
 
 Available @ **[Analizerka / Personal finanse analyzer](http://)**
 
----
-
 ### O co chodzi?  / What is it?
 Project which helps carrying personal finanse. Made with intention to improve and eventually displace 'the spreadsheet' way of finanse conducting.
 

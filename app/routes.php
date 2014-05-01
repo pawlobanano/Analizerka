@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', 'AnalizerController@index');
+Route::resource('', 'AnalyzerController');
+Route::resource('user', 'UserController');
+Route::resource('expense', 'ExpenseController');
 
-Route::get('login', 'AnalizerController@login');
-Route::get('logowanie', 'AnalizerController@login');
-
-Route::get('logout', 'AnalizerController@logout');
-Route::get('wyloguj', 'AnalizerController@logout');
-
-Route::get('register', 'AnalizerController@register');
-Route::get('rejestracja', 'AnalizerController@register');
+Route::post('login', ['as' => 'user.login', 'uses' => 'UserController@login']);
+Route::post('logout', ['as' => 'user.logout', 'uses' => 'UserController@logout']);
+Route::post('register', ['as' => 'user.register', 'uses' => 'UserController@register']);

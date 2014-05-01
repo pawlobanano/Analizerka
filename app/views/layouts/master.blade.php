@@ -21,7 +21,7 @@
 <body>
 
 
-@section('menu-wrapper')
+@section('wrapper')
 <div id="wrapper">
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation"
@@ -37,8 +37,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="index.html">Analizerka wita na
-                pokładzie</a>
+            <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Hello traveller!</a>
 
         </div>
         <!-- /.navbar-header -->
@@ -64,8 +63,8 @@
 
                     <li class="divider"></li>
 
-                    <li><a href="login.html"><i
-                                class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="{{ action('UserController@logout') }}"
+                           class="fa fa-sign-out fa-fw">Logout</a>
                     </li>
 
                 </ul>
@@ -84,7 +83,7 @@
                 <ul class="nav" id="side-menu">
 
                     <li>
-                        <a href="index.html"><i
+                        <a href="{{ action('AnalyzerController@index') }}"><i
                                 class="fa fa-dashboard fa-fw"></i>
                             Dashboard</a>
                     </li>
@@ -120,8 +119,9 @@
     </nav>
 
 
-    @yield('content')
+    @yield('page-wrapper')
 
+    @yield('footer')
 
 </div>
 <!-- /#wrapper -->

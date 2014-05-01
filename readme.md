@@ -1,9 +1,9 @@
-## 'Analizerka' / Personal finanse analyzer
+## 'Analizerka' / Personal finance analyzer
 
-Available @ **[Analizerka / Personal finanse analyzer](http://)**
+Available @ **[Analizerka / Personal finance analyzer](http://)**
 
 ### O co chodzi?  / What is it?
-Project which helps carrying personal finanse. Made with intention to improve and eventually displace 'the spreadsheet' way of finanse conducting.
+Project which helps carrying personal finance. Made with intention to improve and eventually displace 'the spreadsheet' way of finance conducting.
 
 ### Co działa / What is working
 
@@ -19,7 +19,7 @@ Project which helps carrying personal finanse. Made with intention to improve an
 
 * insert expense
 * one place to rule them all... a clear dashboard page with some whistles here and there
-* attach photo to expence
+* attach photo to expense
 * fancy and mind-blowing charts (presenting stored data naturally)
 * more users
     * register

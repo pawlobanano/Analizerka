@@ -1,54 +1,59 @@
-@extends('layouts.blank-page')
+@extends('layouts.page-wrapper')
 
-@section('content')
-<div class="container">
 
-    <div class="row">
+@section('wrapper')
 
-        <div class="col-md-4 col-md-offset-4">
+    @section('content')
+    <div class="container">
 
-            <div class="login-panel panel panel-default">
+        <div class="row">
 
-                <div class="panel-heading">
-                    <h3 class="panel-title">#Tu będzie logowanie</h3>
-                </div>
+            <div class="col-md-4 col-md-offset-4">
 
-                <div class="panel-body">
+                <div class="login-panel panel panel-default">
 
-                    <form role="form">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Log in form</h3>
+                    </div>
 
-                        <fieldset>
+                    <div class="panel-body">
 
-                            <div class="form-group">
+                        <form role="form">
 
-                                <input class="form-control" placeholder="E-mail"
-                                       name="email" type="email" autofocus>
+                            <fieldset>
 
-                            </div>
+                                <div class="form-group">
 
-                            <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail"
+                                           name="email" type="email" autofocus>
 
-                                <input class="form-control"
-                                       placeholder="Password" name="password"
-                                       type="password" value="">
+                                </div>
 
-                            </div>
-                            <div class="checkbox">
+                                <div class="form-group">
 
-                                <label>
-                                    <input name="remember" type="checkbox"
-                                           value="Remember Me">Remember Me
-                                </label>
+                                    <input class="form-control"
+                                           placeholder="Password" name="password"
+                                           type="password" value="">
 
-                            </div>
+                                </div>
+                                <div class="checkbox">
 
-                            <!-- Change this to a button or input when using this as a form -->
-                            <a href="index.html"
-                               class="btn btn-lg btn-success btn-block">Login</a>
+                                    <label>
+                                        <input name="remember" type="checkbox"
+                                               value="Remember Me">Remember Me
+                                    </label>
 
-                        </fieldset>
+                                </div>
 
-                    </form>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <a href="index.html"
+                                   class="btn btn-lg btn-success btn-block">Login</a>
+
+                            </fieldset>
+
+                        </form>
+
+                    </div>
 
                 </div>
 
@@ -57,6 +62,6 @@
         </div>
 
     </div>
+    @show
 
-</div>
 @stop

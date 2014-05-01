@@ -3,8 +3,8 @@
 class Category extends Eloquent
 {
 
-//    public function expenses()
-//    {
-//        return $this->hasMany('Expense');
-//    }
+    public function expenses()
+    {
+        return $this->hasMany('Expense');
+    }
 }

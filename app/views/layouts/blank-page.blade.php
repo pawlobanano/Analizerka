@@ -1,12 +1,6 @@
 @extends('layouts.master')
 
 
-@section('title')
-@parent
-    Rejestracja
-@stop
-
-
 @section('header-styles')
 <!-- Core CSS - Include with every page -->
 {{ HTML::style('vendor/sb-admin-v2/css/bootstrap.min.css') }}

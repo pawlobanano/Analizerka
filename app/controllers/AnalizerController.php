@@ -13,13 +13,13 @@ class AnalizerController extends BaseController
         return View::make('user.register');
     }
 
-    public function home()
+    public function index()
     {
         // Table
         // Last n expenses
         $expenses = DB::table('expenses')->groupBy('id')->take(5)->get();
 //        var_dump($expenses);
 
-        return View::make('analizer.home', ['expenses' => $expenses]);
+        return View::make('analizer.index', ['expenses' => $expenses]);
     }
 }

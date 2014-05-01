@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>
+
+
         @section('title')
         Analizerka |
         @show
+
+
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @section('header-styles')
-    @show
+
+    @yield('header-styles')
+
 
 </head>
 <body>
+
 
 @section('menu-wrapper')
 <div id="wrapper">
@@ -121,8 +127,9 @@
 <!-- /#wrapper -->
 @show
 
-@section('footer-scripts')
-@show
+
+@yield('footer-scripts')
+
 
 </body>
 </html>

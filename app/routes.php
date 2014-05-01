@@ -11,43 +11,13 @@
 |
 */
 
-Route::get('/user-przez-expense', function()
-{
-    $user = Expense::find(1)->user;
+Route::get('/', 'AnalizerController@index');
 
-    return $user;
-});
-
-Route::get('/category-przez-expense', function()
-{
-    $category = Expense::find(1)->category;
-
-    return $category;
-});
-
-Route::get('/user-przez-monthly_income', function()
-{
-    $user = MonthlyIncome::find(1)->user;
-
-    return $user;
-});
-
-Route::get('/month-przez-monthly_income', function()
-{
-    $month = MonthlyIncome::find(1)->month;
-
-    return $month;
-});
-
-Route::get('users', function()
-{
-    $users = User::all();
-
-    return View::make('users')->with('users', $users);
-});
-
+Route::get('login', 'AnalizerController@login');
 Route::get('logowanie', 'AnalizerController@login');
 
-Route::get('rejestracja', 'AnalizerController@register');
+Route::get('logout', 'AnalizerController@logout');
+Route::get('wyloguj', 'AnalizerController@logout');
 
-Route::get('/', 'AnalizerController@home');
+Route::get('register', 'AnalizerController@register');
+Route::get('rejestracja', 'AnalizerController@register');

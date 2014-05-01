@@ -9,15 +9,16 @@ Project which helps carrying personal finance. Made with intention to improve an
 
 **Routes - features available** (*estimated % done*)
 
-* / ( 3% )
-* /login ( .3% )
-* /logout ( 0% )
-* /register ( .25% )
+* / ( 4% )
+* /expense/create ( 5.6% )
+* /user/login ( .13% )
+* /user/logout ( 0% )
+* /user/register ( .25% )
 
 ### Co pozostaje do zrobienia / What's more to implement
 **Features to implement**
 
-* insert expense
+* ~~insert~~ manipulate expense
 * one place to rule them all... a clear dashboard page with some whistles here and there
 * attach photo to expense
 * fancy and mind-blowing charts (presenting stored data naturally)

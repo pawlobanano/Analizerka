@@ -11,10 +11,11 @@
 |
 */
 
-Route::resource('', 'AnalyzerController');
-Route::resource('user', 'UserController');
-Route::resource('expense', 'ExpenseController');
-
 Route::post('login', ['as' => 'user.login', 'uses' => 'UserController@login']);
 Route::post('logout', ['as' => 'user.logout', 'uses' => 'UserController@logout']);
-Route::post('register', ['as' => 'user.register', 'uses' => 'UserController@register']);
+Route::get('register', ['as' => 'user.register', 'uses' => 'UserController@register']);
+
+
+Route::resource('/', 'AnalyzerController');
+Route::resource('user', 'UserController');
+Route::resource('expense', 'ExpenseController');

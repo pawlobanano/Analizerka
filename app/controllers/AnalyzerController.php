@@ -10,15 +10,15 @@ class AnalyzerController extends BaseController
      */
     public function index()
     {
-        // listen to the queries and output them to learn!
+        /*// listen to the queries and output them to learn!
         Event::listen('illuminate.query', function ($sql) {
             var_dump($sql);
         });
-        echo '<br><br><br><br>';
+        echo '<br><br><br><br>';*/
 
         $expenses = Expense::all();
 
-        return View::make('analyzer.index', compact('expenses'));
+        return View::make('analyzer.index')->with('expenses', $expenses);
     }
 
 
@@ -29,7 +29,6 @@ class AnalyzerController extends BaseController
      */
     public function create()
     {
-        return View::make('analyzer.expenseCreate');
     }
 
 
@@ -40,22 +39,6 @@ class AnalyzerController extends BaseController
      */
     public function store()
     {
-        // listen to the queries and output them to learn!
-        Event::listen('illuminate.query', function ($sql) {
-            var_dump($sql);
-        });
-        echo '<br><br><br><br>';
-
-        $expense          = new Expense();
-        $expense->value   = Input::get('value');
-        $expense->comment = Input::get('comment');
-        $expense->save();
-
-
-        $input = Input::all();
-        var_dump($input);
-
-        return Redirect::route('expensesList');
     }
 
 

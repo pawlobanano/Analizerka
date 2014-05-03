@@ -1,4 +1,4 @@
-@extends('layouts.page-wrapper')
+@extends('layouts.wrapper')
 
 
 @section('wrapper')

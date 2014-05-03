@@ -8,6 +8,7 @@ class CategoryTableSeeder extends Seeder
         DB::table('categories')->truncate();
 
         $categories = [
+            ['name' => 'Brak'],
             ['name' => 'Spożywczy'],
             ['name' => 'Zamawiane jedzenie'],
             ['name' => 'Kino']

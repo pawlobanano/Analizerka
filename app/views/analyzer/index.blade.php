@@ -1,8 +1,9 @@
-@extends('layouts.page-wrapper')
+@extends('layouts.wrapper')
 
 
 @section('title')
 @parent
+
 Home Page
 @stop
 
@@ -18,7 +19,7 @@ Home Page
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">Awesome Table</h1>
+                    <h1 class="page-header">Expenses Table</h1>
                 </div>
                 <!-- /.col-lg-12 -->
 
@@ -30,9 +31,8 @@ Home Page
                 <div class="col-lg-12">
 
                     <div class="panel panel-default">
-
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            Expenses Table
                         </div>
                         <!-- /.panel-heading -->
 
@@ -42,9 +42,8 @@ Home Page
 
                                 <table
                                     class="table table-striped table-bordered table-hover"
-                                    id="dataTables-example">
+                                    id="expensesTable">
                                     <thead>
-
                                     <tr>
                                         <th>Id</th>
                                         <th>Date</th>
@@ -54,33 +53,30 @@ Home Page
                                         <th>Added</th>
                                         <th>Options</th>
                                     </tr>
-
                                     </thead>
-
                                     <tbody>
-
                                     @foreach ($expenses as $expense)
                                     <tr>
                                         <td>{{ $expense->id }}</td>
-                                        <td>{{{ date("d-m-Y
-                                            H:m",strtotime($expense->date)) }}}
+                                        <td>{{ date("d-m-Y H:m",
+                                            strtotime($expense->date)) }}
                                         </td>
-                                        <td>{{ $expense->category->name }}</td>
-                                        <td>{{ $expense->value }}</td>
-                                        <td>{{ $expense->comment }}</td>
-                                        <td>{{{ date("d-m-Y
-                                            H:m",strtotime($expense->created_at)) }}}
+                                        <td>{{{ $expense->category->name }}}</td>
+                                        <td>{{{ $expense->value }}}</td>
+                                        <td>{{{ $expense->comment }}}</td>
+                                        <td>{{ date("d-m-Y H:m",
+                                            strtotime($expense->created_at)) }}
                                         </td>
-                                        <td><a href="{{ action('AnalyzerController@edit', $expense->id) }}"\
-                                            class="btn btn-default">Edit</a>
-                                            <a href="{{ action('AnalyzerController@destroy', $expense->id) }}"\
-                                            class="btn btn-default">Delete</a>
+                                        <td>
+                                            <a href="{{ action('ExpenseController@edit', $expense->id) }}"
+                                               class="btn btn-primary btn-xs btn-block">Edit</a>
+                                            <a href="{{ action('ExpenseController@destroy', $expense->id) }}"
+                                               onclick="if(!confirm('I\'ll do it!')){return false;};"
+                                               class="btn btn-danger btn-xs btn-block">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
-
                                     </tbody>
-
                                 </table>
 
                             </div>

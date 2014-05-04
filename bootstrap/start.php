@@ -24,11 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment([
 
-	'local' => array('ergo-Vostro-3300'),
+	'local' => ['ergo-Vostro-3300'],
 
-));
+]);
 
 /*
 |--------------------------------------------------------------------------

@@ -78,7 +78,7 @@ Expense Create
                     {{ Form::textarea('comment', null, ['class' => 'form-control']) }}
             </div>
 
-            {{ Form::submit('Create the Expense!', ['class' =>'btn btn-primary']) }}
+            {{ Form::submit('Edit the Expense!', ['class' =>'btn btn-primary']) }}
             <a href="{{ URL::previous() }}" class="btn btn-info">No, take me back!</a>
             {{ Form::close() }}
 

@@ -23,7 +23,6 @@ class ExpenseController extends \BaseController
      */
     public function create()
     {
-        /*$categories = Category::orderBy('id', 'asc')->lists('name');*/
         $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
 
         return View::make('expense.create', ['categories' => $categories]);
@@ -37,13 +36,22 @@ class ExpenseController extends \BaseController
      */
     public function store()
     {
-        $validator = Validator::make($data = Input::all(), Expense::$rules);
+        $validator = Validator::make(Input::all(), Expense::$rules);
 
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        Expense::create($data);
+        $expense              = new Expense;
+        $expense->user_id     = Input::get('user_id');
+        $expense->date        = new DateTime(Input::get('date'));
+        $expense->category_id = Input::get('category_id');
+        $value                = str_replace(',', '.', Input::get('value'));
+        $expense->value       = number_format($value, 2, '.', '');;
+        $expense->comment = Input::get('comment');
+        $expense->save();
+
+        Session::flash('message', 'Successfully created expense!');
 
         return Redirect::route('expense.index');
     }
@@ -73,7 +81,13 @@ class ExpenseController extends \BaseController
      */
     public function edit($id)
     {
-        //
+        $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
+        $expense    = Expense::find($id);
+
+        return View::make('expense.edit', [
+            'categories' => $categories,
+            'expense'    => $expense
+        ]);
     }
 
 
@@ -86,7 +100,26 @@ class ExpenseController extends \BaseController
      */
     public function update($id)
     {
-        //
+        $validator = Validator::make(Input::all(), Expense::$rules);
+
+        if ($validator->fails()) {
+            return Redirect::route('expense.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $expense              = Expense::find($id);
+            $expense->user_id     = Input::get('user_id');
+            $expense->date        = new DateTime(Input::get('date'));
+            $expense->category_id = Input::get('category_id');
+            $value                = str_replace(',', '.', Input::get('value'));
+            $expense->value       = number_format($value, 2, '.', '');;
+            $expense->comment = Input::get('comment');
+            $expense->save();
+
+            Session::flash('message', 'Successfully updated expense!');
+
+            return Redirect::route('expense.index');
+        }
     }
 
 

@@ -84,10 +84,10 @@
                         <div class="input-group custom-search-form">
                             <input type="text" class="form-control"
                                    placeholder="Search..." id="mainSearch">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
                             </span>
                         </div>
                         <!-- /input-group -->
@@ -108,7 +108,8 @@
 
                             <li>
                                 <a href="{{ URL::route('expense.index') }}"><i
-                                        class="fa fa-list-ol fa-fw"></i> List</a>
+                                        class="fa fa-list-ol fa-fw"></i>
+                                    List</a>
                             </li>
 
                             <li>
@@ -184,7 +185,12 @@
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
-    oTable = $('#expensesTable').dataTable();
+    oTable = $('#expensesTable').dataTable({
+        "bPaginate": true,
+        "bFilter": true,
+        "bInfo": true
+    });
+    $('#expensesTable_filter').hide();
     $('#mainSearch').keyup(function () {
         oTable.fnFilter($(this).val());
     });

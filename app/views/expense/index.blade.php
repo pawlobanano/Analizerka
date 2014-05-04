@@ -31,17 +31,13 @@ Expenses List
         <div class="col-lg-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Expenses Table
-                </div>
-                <!-- /.panel-heading -->
 
                 <div class="panel-body">
 
                     <div class="table-responsive">
 
                         <table
-                            class="table table-striped table-bordered table-hover"
+                            class="table table-hover"
                             id="expensesTable">
                             <thead>
                             <tr>
@@ -58,24 +54,22 @@ Expenses List
                             @foreach ($expenses as $expense)
                             <tr>
                                 <td>{{ $expense->id }}</td>
-                                <td>{{ date("d-m-Y H:i",
-                                    strtotime($expense->date)) }}
+                                <td>{{ str_replace('-', '.', $expense->date) }}
                                 </td>
                                 <td>{{{ $expense->category->name }}}</td>
-                                <td>{{{ $expense->value }}}</td>
-                                <td>{{{ $expense->comment }}}</td>
-                                <td>{{ date("d-m-Y H:i",
+                                <td>{{ str_replace('.', ',', $expense->value) }}</td>
+                                <td>{{{ str_limit($expense->comment, $limit = 14, null) }}}</td>
+                                <td>{{ date("d.m.Y H:i",
                                     strtotime($expense->created_at)) }}
                                 </td>
                                 <td>
                                     <a href="{{ URL::route('expense.edit', $expense->id) }}"
-                                       class="btn btn-primary btn-xs btn-block"><i
-                                            class="fa fa-pencil fa-fw"></i> Edit</a>
+                                       class="btn btn-primary btn-xs btn-block" role="button"><i
+                                            class="fa fa-pencil fa-fw"></i>Edit</a>
                                     <a href="{{ URL::route('expense.destroy', $expense->id) }}"
                                        onclick="if(!confirm('I\'ll do it!')){return false;};"
-                                       class="btn btn-danger btn-xs btn-block"><i
-                                            class="fa fa-trash-o fa-lg"></i>
-                                        Delete</a>
+                                       class="btn btn-danger btn-xs btn-block" role="button"><i
+                                            class="fa fa-trash-o fa-fw"></i>Delete</a>
                                 </td>
                             </tr>
                             @endforeach

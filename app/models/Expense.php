@@ -21,7 +21,7 @@ class Expense extends Eloquent
     ];
 
     public static $rules = [
-        'comment' => 'required|Max:255|Alpha',
+        'comment' => 'Max:255',
     ];
 
 }

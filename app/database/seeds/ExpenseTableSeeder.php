@@ -5,12 +5,13 @@ class ExpenseTableSeeder extends Seeder
 
     public function run()
     {
+        $date = new \DateTime;
         DB::table('expenses')->truncate();
 
         $expenses = [
             [
                 'user_id'     => '3',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '3',
                 'value'       => '34.66',
                 'comment'     => '',
@@ -18,7 +19,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '2',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '2',
                 'value'       => '14.99',
                 'comment'     => 'Taki tam... komentarz',
@@ -26,7 +27,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '1',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '1',
                 'value'       => '7.29',
                 'comment'     => '',
@@ -34,7 +35,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '1',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '1',
                 'value'       => '51.29',
                 'comment'     => '',
@@ -42,7 +43,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '1',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '2',
                 'value'       => '4.29',
                 'comment'     => '',
@@ -50,7 +51,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '1',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '3',
                 'value'       => '48.29',
                 'comment'     => '',
@@ -58,7 +59,7 @@ class ExpenseTableSeeder extends Seeder
             ],
             [
                 'user_id'     => '1',
-                'date'        => date('y-m-d H:i:s'),
+                'date'        => $date,
                 'category_id' => '3',
                 'value'       => '84.29',
                 'comment'     => 'Kocham kino!',

@@ -28,35 +28,25 @@ Expense Create
 
     <div class="panel-body">
 
-        <!-- if there are creation errors, they will show here -->
-        @if ( $errors->count() > 0 )
-        <p>The following errors have occurred:</p>
+        {{ Form::open(['url' => 'expense', 'class' => 'form-horizontal', 'role' => 'form']) }}
 
-        <ul>
-            @foreach( $errors->all() as $message )
-            <li>{{ $message }}</li>
+            <!-- TODO -> get user_id from current session -->
+            {{ Form::hidden('user_id', '1') }}
+
+            @foreach( $errors->get('date') as $message )
+                <p class="text-danger">{{ $message }}</p>
             @endforeach
-        </ul>
-        @endif
-
-        {{ HTML::ul($errors->all()) }}
-
-        {{ Form::open(['url' => 'expense', 'class' => 'form-horizontal']) }}
-
-        <!-- TODO -> get user_id from current session -->
-        {{ Form::hidden('user_id', '1') }}
-
-        <div class="form-group">
-            {{ Form::label('date', 'Date', ['class' => 'col-sm-2 control-label']) }}
-            <div class="col-sm-10">
-                {{ Form::text('date', null, ['class' => 'form-control']) }}
+            @if ( $errors->has('date') )
+            <div class="form-group input-group has-error">
+            @else
+            <div class="form-group input-group">
+            @endif
+                <span class="input-group-addon">Date</span>
+                {{ Form::input('datetime', 'date', null, ['class' => 'form-control', 'placeholder' => '11-11-2014']) }}
             </div>
-        </div>
 
-        <div class="form-group">
-            {{ Form::label('category_id', 'Category', ['class' => 'col-sm-2 control-label']) }}
-
-            <div class="col-sm-10">
+            <div class="form-group input-group">
+                <span class="input-group-addon">Category</span>
                 <select class="form-control" id="category_id" name="category_id">
                     @foreach ($categories as $id => $category)
 
@@ -65,29 +55,34 @@ Expense Create
                     @endforeach
                 </select>
             </div>
-        </div>
 
-        <div class="form-group">
-            {{ Form::label('value', 'Value', ['class' => 'col-sm-2 control-label']) }}
-
-            <div class="col-sm-10">
-                {{ Form::text('value', null, ['class' => 'form-control']) }}
+            @foreach( $errors->get('value') as $message )
+            <p class="text-danger">{{ $message }}</p>
+            @endforeach
+            @if ( $errors->has('value') )
+            <div class="form-group input-group has-error">
+            @else
+            <div class="form-group input-group">
+            @endif
+                <span class="input-group-addon">Value</span>
+                {{ Form::text('value', null, ['class' => 'form-control', 'placeholder' => '11,11']) }}
             </div>
-        </div>
 
-        <div class="form-group">
-            {{ Form::label('comment', 'Comment', ['class' => 'col-sm-2 control-label']) }}
-
-            <div class="col-sm-10">
-                {{ Form::textarea('comment', null, ['class' => 'form-control']) }}
+            @foreach( $errors->get('comment') as $message )
+            <p class="text-danger">{{ $message }}</p>
+            @endforeach
+            @if ( $errors->has('comment') )
+            <div class="form-group input-group has-error">
+            @else
+            <div class="form-group input-group">
+            @endif
+                <span class="input-group-addon">Comment</span>
+                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'A comment maybe?']) }}
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="form-group input-group">
                 {{ Form::submit('Create the Expense!', ['class' => 'btn btn-primary']) }}
             </div>
-        </div>
 
         {{ Form::close() }}
 

@@ -66,9 +66,6 @@ class ExpenseController extends \BaseController
      */
     public function show($id)
     {
-        $expense = Expense::findOrFail($id);
-
-        return View::make('expense.show', ['expense' => $expense]);
     }
 
 

@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment([
 
 	'local' => ['ergo-Vostro-3300'],
-    //'production' => ['PabaVPS']
+    'production' => ['PabaVPS']
 
 ]);
 

@@ -16,20 +16,20 @@ Expense Create
 @section('content')
 <div id="page-wrapper">
 
-    <ol class="breadcrumb" style="margin-bottom: 0">
-        <li><a href="#">Expenses</a></li>
-        <li class="active">Create</li>
+    <ol class="breadcrumb">
+        <li><a href="{{ URL::route('expense.index') }}">{{ ucfirst(Request::segment(1)) }}</a></li>
+        <li class="active">{{ ucfirst(Request::segment(2)) }}</li>
     </ol>
 
-    <div class="row">
+    <!-- will be used to show any messages -->
+    @if (Session::has('success'))
+        <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @elseif (Session::has('error'))
+        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+    @endif
 
-        <div class="col-lg-12">
-            <h1>Create Expense</h1>
-        </div>
-        <!-- /.col-lg-12 -->
 
-    </div>
-    <!-- /.row -->
+
 
     <div class="panel-body">
 
@@ -40,17 +40,17 @@ Expense Create
         {{ Form::hidden('user_id', '1') }}
 
 
-        @foreach ( $errors->get('date') as $message )
+        @foreach ($errors->get('date') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('date') )
+        @if ($errors->has('date'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
         @endif
             <span class="input-group-addon">Date</span>
-                {{ Form::input('datetime', 'date', null, ['class' => 'form-control', 'placeholder' => '11-11-2014']) }}
+                {{ Form::text('date', null, ['class' => 'form-control', 'placeholder' => '11-11-2014']) }}
         </div>
 
 
@@ -64,11 +64,11 @@ Expense Create
         </div>
 
 
-        @foreach ( $errors->get('value') as $message )
+        @foreach ($errors->get('value') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('value') )
+        @if ($errors->has('value'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -78,11 +78,11 @@ Expense Create
         </div>
 
 
-        @foreach ( $errors->get('comment') as $message )
+        @foreach ($errors->get('comment') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('comment') )
+        @if ($errors->has('comment'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -92,11 +92,11 @@ Expense Create
         </div>
 
 
-        @foreach ( $errors->get('file') as $message )
+        @foreach ($errors->get('file') as $message)
         <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('value') )
+        @if ($errors->has('value'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -110,9 +110,9 @@ Expense Create
         </div>
 
 
-        <div class="form-group input-group">
-            {{ Form::submit('Create the Expense!', ['class' => 'btn btn-primary']) }}
-        </div>
+        {{ Form::submit('Create the Expense!', ['class' => 'btn btn-primary']) }}
+
+        <a href="{{ URL::previous() }}" class="btn btn-info">No, take me back!</a>
 
 
         {{ Form::close() }}
@@ -124,37 +124,6 @@ Expense Create
 <!-- /#page-wrapper -->
 @show
 
-@stop
-
-@section('footer-scripts')
-@parent
-
-<script>
-    // Input file helper
-    $(document)
-        .on('change', '.btn-file :file', function() {
-            var input = $(this),
-                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [numFiles, label]);
-        });
-
-    // Input file helper
-    $(document).ready( function() {
-        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
-
-        });
-    });
-    </script>
 @stop
 
 @stop

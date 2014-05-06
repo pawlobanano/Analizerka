@@ -39,21 +39,27 @@ class ExpenseController extends \BaseController
         $validator = Validator::make(Input::all(), Expense::$rules);
 
         if ($validator->fails()) {
+            Session::flash('error', 'Something goes wrong!');
+
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
         $expense              = new Expense;
         $expense->user_id     = Input::get('user_id');
-        $expense->date        = new DateTime(Input::get('date'));
+        $date = DateTime::createFromFormat('d-m-Y', Input::get('date'));
+        $expense->date        = $date->format('Y-m-d');// For the DB column standard
         $expense->category_id = Input::get('category_id');
         $value                = str_replace(',', '.', Input::get('value'));
         $expense->value       = number_format($value, 2, '.', '');;
         $expense->comment = Input::get('comment');
+//        $expense->photo = Input::file('photo');
+//        $destinationPath = 'uploads';
+//        $filename = str_random(12);
         $expense->save();
 
-        Session::flash('message', 'Successfully created expense!');
+        Session::flash('success', 'Successfully created expense!');
 
-        return Redirect::back();
+        return Redirect::intended('expense.create');
     }
 
 
@@ -81,6 +87,9 @@ class ExpenseController extends \BaseController
         $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
         $expense    = Expense::find($id);
 
+        // Change for view standard
+        $expense->date = date("d-m-Y", strtotime($expense->date));
+
         return View::make('expense.edit', [
             'categories' => $categories,
             'expense'    => $expense
@@ -100,6 +109,8 @@ class ExpenseController extends \BaseController
         $validator = Validator::make(Input::all(), Expense::$rules);
 
         if ($validator->fails()) {
+            Session::flash('error', 'Something goes wrong!');
+
             return Redirect::route('expense.edit', $id)
                 ->withErrors($validator)
                 ->withInput();
@@ -113,7 +124,7 @@ class ExpenseController extends \BaseController
             $expense->comment = Input::get('comment');
             $expense->save();
 
-            Session::flash('message', 'Successfully updated expense!');
+            Session::flash('success', 'Successfully updated expense!');
 
             return Redirect::back()->withInput();
         }
@@ -132,7 +143,7 @@ class ExpenseController extends \BaseController
         $expense = Expense::find($id);
         $expense->delete();
 
-        Session::flash('message', 'Successfully deleted the expense!');
+        Session::flash('success', 'Successfully deleted the expense!');
 
         return Redirect::back();
     }

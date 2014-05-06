@@ -17,8 +17,7 @@ Expenses List
 <div id="page-wrapper">
 
     <ol class="breadcrumb">
-        <li><a href="#">Expenses</a></li>
-        <li class="active">List</li>
+        <li class="active">{{ ucfirst(Request::segment(1)) }}</li>
     </ol>
 
     <div class="row">
@@ -56,8 +55,8 @@ Expenses List
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-outline btn-info dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear fa-fw"></i>Settings <span class="caret"></span></button>
-                                        <ul class="dropdown-menu" >
-                                            <li style="padding-bottom: 5px;"><button type="submit" href="{{ URL::route('expense.edit', $expense->id) }}" class="btn btn-warning btn-sm btn-block"><i class="fa fa-pencil fa-fw"></i>Edit</button></li>
+                                        <ul class="dropdown-menu dropdown-menu-right" >
+                                            <li><a href="{{ URL::route('expense.edit', $expense->id) }}" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil fa-fw"></i>Edit</a></li>
                                             <li>{{ Form::open(['route' => ['expense.destroy', $expense->id], 'method' => 'delete']) }}<button type="submit" href="{{ URL::route('expense.destroy', $expense->id) }}" onclick="if(!confirm('I\'ll do it!')){return false;};" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash-o fa-fw"></i>Delete</button>{{ Form::close() }}</li>
                                         </ul>
                                     </div>

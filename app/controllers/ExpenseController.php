@@ -59,7 +59,7 @@ class ExpenseController extends \BaseController
 
         Session::flash('success', 'Successfully created expense!');
 
-        return Redirect::intended('expense.create');
+        return Redirect::route('expense.index');
     }
 
 

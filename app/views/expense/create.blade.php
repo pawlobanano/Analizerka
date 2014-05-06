@@ -112,7 +112,7 @@ Expense Create
 
         {{ Form::submit('Create the Expense!', ['class' => 'btn btn-primary']) }}
 
-        <a href="{{ URL::previous() }}" class="btn btn-info">No, take me back!</a>
+        <a href="{{ URL::route('expense.index') }}" class="btn btn-info">No, take me back!</a>
 
 
         {{ Form::close() }}

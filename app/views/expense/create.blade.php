@@ -96,7 +96,7 @@ Expense Create
         <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ($errors->has('value'))
+        @if ($errors->has('photo'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">

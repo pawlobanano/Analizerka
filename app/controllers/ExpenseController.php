@@ -56,6 +56,8 @@ class ExpenseController extends \BaseController
 //        $destinationPath = 'uploads';
 //        $filename = str_random(12);
         $expense->save();
+        $test = 1000000000*($expense::find(70)->value);
+        dd($test);
 
         Session::flash('success', 'Successfully created expense!');
 

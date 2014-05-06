@@ -53,7 +53,7 @@ class ExpenseController extends \BaseController
 
         Session::flash('message', 'Successfully created expense!');
 
-        return Redirect::route('expense.index');
+        return Redirect::back();
     }
 
 
@@ -115,7 +115,7 @@ class ExpenseController extends \BaseController
 
             Session::flash('message', 'Successfully updated expense!');
 
-            return Redirect::route('expense.index');
+            return Redirect::back()->withInput();
         }
     }
 
@@ -129,7 +129,12 @@ class ExpenseController extends \BaseController
      */
     public function destroy($id)
     {
-        //
+        $expense = Expense::find($id);
+        $expense->delete();
+
+        Session::flash('message', 'Successfully deleted the expense!');
+
+        return Redirect::back();
     }
 
 

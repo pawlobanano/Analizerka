@@ -19,7 +19,7 @@ class CreateExpensesTable extends Migration
             $table->date('date');
             $table->integer('category_id')->unsigned();
             $table->float('value');
-            $table->string('comment')->nullable();
+            $table->string('comment', 255)->nullable();
             $table->timestamps();
         });
     }

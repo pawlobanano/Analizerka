@@ -190,7 +190,9 @@
         "bFilter": true,
         "bInfo": true
     });
-    $('#expensesTable_filter').hide();
+
+    // Here you can hide table's search bar
+//    $('#expensesTable_filter').hide();
     $('#mainSearch').keyup(function () {
         oTable.fnFilter($(this).val());
     });

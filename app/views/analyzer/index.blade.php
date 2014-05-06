@@ -11,15 +11,19 @@ Home Page
 @section('wrapper')
 @parent
 
-    @section('page-wrapper')
+@section('page-wrapper')
 
-        @section('content')
+@section('content')
         <div id="page-wrapper">
+
+            <ol class="breadcrumb" style="margin-bottom: 0;">
+                <li class="active">Dashboard</li>
+            </ol>
 
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">Expenses Table</h1>
+                    <h1>Expenses Table</h1>
                 </div>
                 <!-- /.col-lg-12 -->
 
@@ -31,18 +35,12 @@ Home Page
                 <div class="col-lg-12">
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Expenses Table
-                        </div>
-                        <!-- /.panel-heading -->
 
                         <div class="panel-body">
 
                             <div class="table-responsive">
 
-                                <table
-                                    class="table table-striped table-bordered table-hover"
-                                    id="expensesTable">
+                                <table class="table table-hover" id="expensesTable">
                                     <thead>
                                     <tr>
                                         <th>Id</th>
@@ -58,21 +56,20 @@ Home Page
                                     @foreach ($expenses as $expense)
                                     <tr>
                                         <td>{{ $expense->id }}</td>
-                                        <td>{{ date("d-m-Y H:m",
-                                            strtotime($expense->date)) }}
+                                        <td>{{ date("d-m-Y", strtotime($expense->date)) }}
                                         </td>
                                         <td>{{{ $expense->category->name }}}</td>
-                                        <td>{{{ $expense->value }}}</td>
-                                        <td>{{{ $expense->comment }}}</td>
-                                        <td>{{ date("d-m-Y H:m",
-                                            strtotime($expense->created_at)) }}
-                                        </td>
+                                        <td>{{ str_replace('.', ',', $expense->value) }}</td>
+                                        <td>{{{ str_limit($expense->comment, $limit = 14, null) }}}</td>
+                                        <td>{{ date("d-m-Y H:i", strtotime($expense->created_at)) }}</td>
                                         <td>
-                                            <a href="{{ action('ExpenseController@edit', $expense->id) }}"
-                                               class="btn btn-primary btn-xs btn-block">Edit</a>
-                                            <a href="{{ action('ExpenseController@destroy', $expense->id) }}"
-                                               onclick="if(!confirm('I\'ll do it!')){return false;};"
-                                               class="btn btn-danger btn-xs btn-block">Delete</a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline btn-info dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear fa-fw"></i>Settings <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li style="padding-bottom: 5px;"><button type="submit" href="{{ URL::route('expense.edit', $expense->id) }}" class="btn btn-warning btn-sm btn-block"><i class="fa fa-pencil fa-fw"></i>Edit</button></li>
+                                                    <li>{{ Form::open(['route' => ['expense.destroy', $expense->id], 'method' => 'delete']) }}<button type="submit" href="{{ URL::route('expense.destroy', $expense->id) }}" onclick="if(!confirm('I\'ll do it!')){return false;};" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash-o fa-fw"></i>Delete</button>{{ Form::close() }}</li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -95,9 +92,9 @@ Home Page
             <!-- /.row -->
 
         </div>
-        <!-- /#page-wrapper -->
-        @show
+<!-- /#page-wrapper -->
+@show
 
-    @stop
+@stop
 
 @stop

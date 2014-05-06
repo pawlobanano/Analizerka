@@ -21,7 +21,11 @@ class Expense extends Eloquent
     ];
 
     public static $rules = [
-        'comment' => 'Max:255',
+        'user_id'     => 'required|integer',
+        'date'        => 'required|date_format:"m-d-Y"',
+        'category_id' => 'required|integer',
+        'value'       => 'required|regex:/^[0-9]+(\,[0-9]{1,2}+)$/',
+        'comment'     => 'Max:255',
     ];
 
 }

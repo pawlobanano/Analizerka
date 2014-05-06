@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->date('date');
             $table->integer('category_id')->unsigned();
-            $table->float('value', '9,2');
+            $table->float('value', 9, 2);
             $table->string('comment', 255)->nullable();
             $table->timestamps();
         });

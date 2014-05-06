@@ -18,7 +18,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 ### Co pozostaje do zrobienia / What's more to implement
 **Features to implement**
 
-* ~insert and manipulate expense~
+* ~~insert and manipulate expense~~
 * attach photo to expense
 * one place to rule them all... a clear dashboard page with some whistles here and there
 * fancy and mind-blowing charts (presenting stored data naturally)

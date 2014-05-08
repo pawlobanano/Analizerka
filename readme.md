@@ -9,8 +9,8 @@ Project which helps carrying personal finance. Made with intention to improve an
 
 **Routes - features available** (*estimated % done*)
 
-* / ( 5% )
-* /expense (create, read, update, delete)+validation ( 77.6% )
+* / ( 4% )
+* /expense (create, read, update, delete)+validation ( 79.76% )
 * /login ( .13% )
 * /logout ( 0% )
 * /register ( .25% )

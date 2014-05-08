@@ -10,7 +10,7 @@ class ExpenseController extends \BaseController
      */
     public function index()
     {
-        $expenses = Expense::all();
+        $expenses = Expense::with('category')->get();
 
         return View::make('expense.index', ['expenses' => $expenses]);
     }
@@ -23,7 +23,7 @@ class ExpenseController extends \BaseController
      */
     public function create()
     {
-        $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
+        $categories = Category::all();
 
         return View::make('expense.create', ['categories' => $categories]);
     }

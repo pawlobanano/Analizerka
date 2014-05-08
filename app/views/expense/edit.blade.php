@@ -4,7 +4,7 @@
 @section('title')
 @parent
 
-Expense Create
+Expense Edit
 @stop
 
 
@@ -35,7 +35,7 @@ Expense Create
 
     <div class="panel-body">
 
-        {{ Form::model($expense, ['route' => ['expense.update', $expense->id], 'method' => 'PUT'], ['class' => 'form-horizontal', 'role' => 'form']) }}
+        {{ Form::model($expense, ['route' => ['expense.update', $expense->id], 'method' => 'PATCH'], ['class' => 'form-horizontal', 'role' => 'form']) }}
 
 
         <!-- TODO -> get user_id from current session -->
@@ -59,8 +59,8 @@ Expense Create
         <div class="form-group input-group">
             <span class="input-group-addon">Category</span>
             <select class="form-control" id="category_id" name="category_id">
-                @foreach ($categories as $id => $category)
-                    <option value="{{ $id }}" @if ($id===1) {{ 'selected' }} @endif>{{ $category }}</option>
+                @foreach ($categories as $id => $name)
+                    <option value="{{ $id }}" {{ ($expense->category && $id == $expense->category->id) ? 'selected' : '' }}>{{{ $name }}}</option>
                 @endforeach
             </select>
         </div>

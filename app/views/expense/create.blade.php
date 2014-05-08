@@ -57,8 +57,8 @@ Expense Create
         <div class="form-group input-group">
             <span class="input-group-addon">Category</span>
             <select class="form-control" id="category_id" name="category_id">
-                @foreach ($categories as $id => $category)
-                    <option value="{{ $id }}" @if ($id===1) {{ 'selected' }} @endif>{{ $category }}</option>
+                @foreach ($categories as $key => $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

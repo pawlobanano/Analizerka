@@ -33,7 +33,7 @@ Expenses List
                         <table class="table table-hover" id="expensesTable">
                             <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>No.</th>
                                 <th>Date</th>
                                 <th>Category</th>
                                 <th>Value</th>
@@ -43,12 +43,11 @@ Expenses List
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($expenses as $expense)
+                            @foreach ($expenses as $key => $expense)
                             <tr>
-                                <td>{{ $expense->id }}</td>
-                                <td>{{ date("d-m-Y", strtotime($expense->date)) }}
-                                </td>
-                                <td>{{{ $expense->category->name }}}</td>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ date("d-m-Y", strtotime($expense->date)) }}</td>
+                                <td>{{{ $expense->category->name or '' }}}</td>
                                 <td>{{ str_replace('.', ',', $expense->value) }}</td>
                                 <td>{{{ str_limit($expense->comment, $limit = 14, null) }}}</td>
                                 <td>{{ date("d-m-Y H:i", strtotime($expense->created_at)) }}</td>

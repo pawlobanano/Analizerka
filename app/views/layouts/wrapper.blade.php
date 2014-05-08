@@ -51,13 +51,13 @@
                         </li>
 
                         <li>
-
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                            <a href="{{ action('UserController@logout') }}" class="fa fa-sign-out fa-fw">Logout</a>
+                            <a href="{{ action('UserController@logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
 
                     </ul>

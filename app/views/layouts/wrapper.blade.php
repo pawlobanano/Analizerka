@@ -109,16 +109,16 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts placeholder<span class="fa arrow"></span></a>
 
                             <ul class="nav nav-second-level">
 
                                 <li>
-                                    <a href="{{ URL::route('index') }}">Flot Charts</a>
+                                    <a href="{{ URL::route('index') }}">Chart 1</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ URL::route('index') }}">Morris.js Charts</a>
+                                    <a href="{{ URL::route('index') }}">Chart 2</a>
                                 </li>
 
                             </ul>

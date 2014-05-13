@@ -69,7 +69,7 @@ class ExpenseController extends BaseController
             $errorMessages = [];
             $validFiles    = [];
 
-            // Loop through all uploaded images
+            // Loop through all uploaded images and validate them
             foreach ($allImages as $file) {
 
                 // Ignore array member if it's not an UploadedFile object, just to be extra safe
@@ -90,33 +90,37 @@ class ExpenseController extends BaseController
 
                 } else {
                     foreach ($imgValidator->messages()->all() as $key => $message) {
-                        $errorFileName   = ($key > 0 ? "" : '\'' . $file->getClientOriginalName() . '\':<br>');
+                        $errorFileName            = ($key > 0 ? "" : '\'' . $file->getClientOriginalName() . '\':<br>');
                         $errorMessages['image'][] = $errorFileName . '<p class="help-block">' . $message . '</p>';
                     }
                 }
             }
 
-            // Upload and save into database ONLY if all files passed validation
-            if (count($allImages) == count($validFiles)) {
-
-                // Make directories and put there files
-                $folderName = str_random(12);
-                $fileName   = $file->getClientOriginalName();
-                $file->move(public_path('uploads/' . $folderName . '/'), $fileName);
-
-                // Bring Image model with newly created Expense id and insert information to it!
-                $expenseId          = $expense->id;
-                $image              = new Image();
-                $image->expense_id  = $expenseId;
-                $image->folder_name = $folderName;
-                $image->name        = $fileName;
-                $image->save();
-
-            } else {
+            if (!empty($errorMessages)) {
                 // Return, redirect with flash message
                 Session::flash('error', 'Something went wrong with one of your image!');
 
                 return Redirect::back()->withErrors($errorMessages)->withInput();
+            }
+
+            // Loop through all uploaded images and save them
+            foreach ($allImages as $file) {
+                // Upload and save into database ONLY if all files passed validation
+                if (count($allImages) == count($validFiles)) {
+
+                    // Make directories and put there files
+                    $folderName = str_random(12);
+                    $fileName   = $file->getClientOriginalName();
+                    $file->move(public_path('uploads/' . $folderName . '/'), $fileName);
+
+                    // Bring Image model with newly created Expense id and insert information to it!
+                    $expenseId          = $expense->id;
+                    $image              = new Image();
+                    $image->expense_id  = $expenseId;
+                    $image->folder_name = $folderName;
+                    $image->name        = $fileName;
+                    $image->save();
+                }
             }
         }
 
@@ -149,6 +153,11 @@ class ExpenseController extends BaseController
     {
         $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
         $expense    = Expense::find($id);
+        $image = Image::whereHas('expense', function($query) use ($id) {
+            $query->where('id', $id);
+        })->get();
+
+//        dd($image[0]);
 
         // Change for view standard
         $expense->date = date("d-m-Y", strtotime($expense->date));

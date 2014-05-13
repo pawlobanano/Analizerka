@@ -24,7 +24,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 * Categories management
 * Monthly income management
 * ~~One place to rule them all... a dashboard page with some whistles here and there~~
-* Fancy and mind-blowing charts (presenting stored data naturally)
+* **Fancy and mind-blowing charts** (presenting stored data)
 * More users
     * register
     * login

@@ -2,21 +2,6 @@
 
 class Expense extends Eloquent
 {
-    public function user()
-    {
-        return $this->belongsTo('User');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo('Category');
-    }
-
-    public function image()
-    {
-        return $this->hasMany('Image');
-    }
-
     protected $fillable = [
         'user_id',
         'date',
@@ -32,4 +17,19 @@ class Expense extends Eloquent
         'value'       => 'required|regex:/^[1-9]+(?:\,[0-9]{1,2}+)?$/',
         'comment'     => 'Max:255'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('Category');
+    }
+
+    public function image()
+    {
+        return $this->hasMany('Image');
+    }
 }

@@ -9,14 +9,14 @@ class User extends Eloquent
      */
     protected $hidden = ['password'];
 
-    public function expenses()
-    {
-        return $this->hasMany('Expense');
-    }
-
     public static $rules = [
         'username' => 'required|unique',
         'password' => 'required|min:6',
         'email' => 'required|email'
     ];
+
+    public function expenses()
+    {
+        return $this->hasMany('Expense');
+    }
 }

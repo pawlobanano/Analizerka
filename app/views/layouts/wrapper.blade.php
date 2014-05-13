@@ -140,7 +140,7 @@
 
         @section('footer')
         <div class="footer text-center">
-            &copy; 2014 <a href="mailto:pawlobanano@gmail.com?Subject=Personal Finance Analyzer">Paweł Banach</a>
+            &copy; 2014 <a href="https://github.com/pawlobanano" target="_blank">@pawlobanano</a>
         </div>
         @show
 
@@ -207,6 +207,7 @@
         // DatePicker (from jQuery UI)
         $('input[name = date]').datepicker( {
             dateFormat: 'dd-mm-yy',
+            firstDay: 1,
             showWeek: true,
             changeMonth: true,
             changeYear: true,

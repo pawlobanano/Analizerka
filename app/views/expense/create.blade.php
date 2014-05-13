@@ -29,11 +29,9 @@ Expense Create
     @endif
 
 
-
-
     <div class="panel-body">
 
-        {{ Form::open(['url' => 'expense', 'class' => 'form-horizontal', 'role' => 'form']) }}
+        {{ Form::open(['url' => 'expense', 'class' => 'form-horizontal', 'role' => 'form', 'files' => true]) }}
 
 
         <!-- TODO -> get user_id from current session -->
@@ -88,22 +86,22 @@ Expense Create
             <div class="form-group input-group">
         @endif
             <span class="input-group-addon">Comment</span>
-                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'A comment maybe?']) }}
+                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'A comment maybe?', 'rows' => '3']) }}
         </div>
 
 
-        @foreach ($errors->get('file') as $message)
-        <p class="text-danger">{{ $message }}</p>
+        @foreach ($errors->get('image') as $message)
+            <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ($errors->has('photo'))
+        @if ($errors->has('image'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
         @endif
             <span class="input-group-btn">
                 <span class="btn btn-default btn-file" style="background-color: #eee">
-                    <i class="fa fa-picture-o fa-lg"></i> Browse {{ Form::file('photo', ['multiple' => '']) }}
+                    <i class="fa fa-picture-o fa-lg"></i> Browse {{ Form::file('image[]', ['class' => 'form-control', 'multiple' => true]) }}
                 </span>
             </span>
             {{ Form::text(null, null, ['class' => 'form-control', 'readonly' => '']) }}

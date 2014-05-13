@@ -2,7 +2,6 @@
 
 class MonthlyIncome extends Eloquent
 {
-
     /**
      * Defines an inverse one-to-many relationship.
      *

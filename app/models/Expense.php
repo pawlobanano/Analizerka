@@ -12,20 +12,24 @@ class Expense extends Eloquent
         return $this->belongsTo('Category');
     }
 
+    public function image()
+    {
+        return $this->hasMany('Image');
+    }
+
     protected $fillable = [
         'user_id',
         'date',
         'category_id',
         'value',
-        'comment',
+        'comment'
     ];
 
     public static $rules = [
         'user_id'     => 'required|integer',
-        'date'        => 'required|date_format:"d-m-Y"',
+        'date'        => 'required|date_format:d-m-Y',
         'category_id' => 'required|integer',
         'value'       => 'required|regex:/^[1-9]+(?:\,[0-9]{1,2}+)?$/',
-        'comment'     => 'Max:255',
+        'comment'     => 'Max:255'
     ];
-
 }

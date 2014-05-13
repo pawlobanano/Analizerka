@@ -5,8 +5,9 @@ class ExpenseTableSeeder extends Seeder
 
     public function run()
     {
-        $date = new \DateTime;
-        DB::table('expenses')->truncate();
+        DB::table('expenses')->delete();
+
+        $date = new DateTime;
 
         $expenses = [
             [

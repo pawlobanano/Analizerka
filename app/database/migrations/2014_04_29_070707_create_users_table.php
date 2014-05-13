@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMonthlyIncomesTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,13 @@ class CreateMonthlyIncomesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('monthly_incomes', function($table)
+		Schema::create('users', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('month_id')->unsigned();
-            $table->float('value');
-            $table->smallInteger('year');
+            $table->string('username', 64)->unique();
+            $table->string('email', 128)->unique();
+            $table->string('password', 64)->unique();
+            $table->string('remember_token');
             $table->timestamps();
         });
 	}
@@ -30,7 +30,7 @@ class CreateMonthlyIncomesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('monthly_incomes');
+		Schema::drop('users');
 	}
 
 }

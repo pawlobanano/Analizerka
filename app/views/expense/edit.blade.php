@@ -90,7 +90,7 @@ Expense Edit
             <div class="form-group input-group">
         @endif
             <span class="input-group-addon">Comment</span>
-            {{ Form::textarea('comment', null, ['class' => 'form-control']) }}
+            {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '3']) }}
         </div>
 
 

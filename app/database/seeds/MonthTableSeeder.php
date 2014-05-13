@@ -5,7 +5,7 @@ class MonthTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('months')->truncate();
+        DB::table('months')->delete();
 
         $months = [
             ['name' => 'Styczeń'],

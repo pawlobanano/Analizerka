@@ -2,7 +2,6 @@
 
 class User extends Eloquent
 {
-
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -14,4 +13,10 @@ class User extends Eloquent
     {
         return $this->hasMany('Expense');
     }
+
+    public static $rules = [
+        'username' => 'required|unique',
+        'password' => 'required|min:6',
+        'email' => 'required|email'
+    ];
 }

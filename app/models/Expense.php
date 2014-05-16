@@ -2,12 +2,8 @@
 
 class Expense extends Eloquent
 {
-    protected $fillable = [
-        'user_id',
-        'date',
-        'category_id',
-        'value',
-        'comment'
+    protected $guarded = [
+        'id'
     ];
 
     public static $rules = [
@@ -31,5 +27,12 @@ class Expense extends Eloquent
     public function image()
     {
         return $this->hasMany('Image');
+    }
+
+    public static function validate($input)
+    {
+        $expValidator = Validator::make($input, self::$rules);
+
+        return $expValidator;
     }
 }

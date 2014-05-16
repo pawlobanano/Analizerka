@@ -2,6 +2,10 @@
 
 class User extends Eloquent
 {
+    protected $guarded = [
+        'id'
+    ];
+
     /**
      * The attributes excluded from the model's JSON form.
      *

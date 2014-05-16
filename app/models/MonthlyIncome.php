@@ -2,6 +2,10 @@
 
 class MonthlyIncome extends Eloquent
 {
+    protected $guarded = [
+        'id'
+    ];
+
     /**
      * Defines an inverse one-to-many relationship.
      *

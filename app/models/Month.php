@@ -2,6 +2,10 @@
 
 class Month extends Eloquent
 {
+    protected $guarded = [
+        'id'
+    ];
+
     public $timestamps = false;
 
     public function monthly_incomes()

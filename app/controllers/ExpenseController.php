@@ -38,9 +38,10 @@ class ExpenseController extends BaseController
      */
     public function store()
     {
-        // Expense part
-        $expValidator = Validator::make(Input::all(), Expense::$rules);
+        // Trying to keep Controller skinny (must learn it finally)
+        $expValidator = Expense::validate(Input::all());
 
+        // Expense part
         if ($expValidator->fails()) {
             Session::flash('error', 'Something went wrong!');
 

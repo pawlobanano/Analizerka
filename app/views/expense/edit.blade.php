@@ -38,7 +38,7 @@ Expense Edit
         {{ Form::model($expense, ['route' => ['expense.update', $expense->id], 'method' => 'PATCH'], ['class' => 'form-horizontal', 'role' => 'form']) }}
 
 
-        <!-- TODO -> get user_id from current session -->
+        <!-- todo -> get user_id from current session -->
         {{ Form::hidden('user_id', '1') }}
 
 

@@ -10,7 +10,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 **Routes - features available** (*estimated % done*)
 
 * / ( 5% )
-* /expense (create, read, update, delete) + validation + images ( 81.76% )
+* /expense (create, read, update, delete) + validation + images ( 81.86% )
 * /login ( .13% )
 * /logout ( 0% )
 * /register ( .15% )
@@ -19,7 +19,8 @@ Project which helps carrying personal finance. Made with intention to improve an
 **Features to implement**
 
 * ~~Insert and manipulate expense~~
-* ~~Attach photo to expense~~
+* ~~Attach photo to expense~~ _(there may be many)_
+* Add show page for a single expense
 * Include Images (CRUD) in edit Expense formular
 * Categories management
 * Monthly income management

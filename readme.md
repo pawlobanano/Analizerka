@@ -29,6 +29,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 * More users
     * register
     * login
+    * logout
 
 And more... any thoughts?
 

@@ -140,6 +140,7 @@ class ExpenseController extends BaseController
      */
     public function show($id)
     {
+        return View::make('expense.show');
     }
 
 

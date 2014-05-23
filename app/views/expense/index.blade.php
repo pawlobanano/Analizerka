@@ -22,7 +22,14 @@ Expenses List
 
     <div class="row">
 
-        <div class="col-lg-12">
+        <div class="col-xs-12">
+
+            <!-- will be used to show any messages -->
+            @if (Session::has('success'))
+                <div class="alert alert-success">{{ Session::get('success') }}</div>
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger">{{ Session::get('error') }}</div>
+            @endif
 
             <div class="panel panel-default">
 

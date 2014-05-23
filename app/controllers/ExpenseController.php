@@ -142,7 +142,19 @@ class ExpenseController extends BaseController
      */
     public function show($id)
     {
-        return View::make('expense.show');
+        $expense = Expense::find($id);
+        $images  = Image::whereHas('expense', function ($query) use ($id) {
+            $query->where('id', $id);
+        })->get();
+
+        // Change for view standard
+        $expense->date  = date("d.m.Y", strtotime($expense->date));
+        $expense->value = str_replace('.', ',', $expense->value);
+
+        return View::make('expense.show', [
+            'expense' => $expense,
+            'images'  => $images
+        ]);
     }
 
 
@@ -196,7 +208,7 @@ class ExpenseController extends BaseController
         $expense->category_id = Input::get('category_id');
         $value                = str_replace(',', '.', Input::get('value'));
         $expense->value       = number_format($value, 2, '.', '');;
-        $expense->comment     = Input::get('comment');
+        $expense->comment = Input::get('comment');
 
         // Image part
         if (Input::hasFile('image') && $expValidator->passes()) {
@@ -287,10 +299,34 @@ class ExpenseController extends BaseController
     public function destroy($id)
     {
         $expense = Expense::find($id);
+        $images  = Image::whereHas('expense', function ($query) use ($id) {
+            $query->where('id', $id);
+        })->get();
+
+        if ($images) {
+            foreach ($images as $image) {
+                $uploadsPath = public_path() . '/uploads/';
+                $fileName    = $image->name;
+                $folderName  = $image->folder_name;
+                $folder      = $uploadsPath . $folderName;
+                $file        = $uploadsPath . $folderName . '/' . $fileName;
+
+                File::delete($file);
+                File::deleteDirectory($folder);
+
+                if (File::exists($file)) {
+                    Session::flash('error', 'Something went wrong with deleting your image!');
+
+                    return Redirect::route('expense.index');
+                }
+            }
+        }
+
+        // We must wait till the related images check is done
         $expense->delete();
 
         Session::flash('success', 'Successfully deleted the expense!');
 
-        return Redirect::back();
+        return Redirect::route('expense.index');
     }
 }

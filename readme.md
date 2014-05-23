@@ -10,7 +10,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 **Routes - features available** (*estimated % done*)
 
 * / ( 5% )
-* /expense (create, read, update, delete) + validation + photos (create, delete) ( 93.86% )
+* /expense (create, read, update, delete) + validation + photos (create, delete) ( 96.86% )
 * /login ( .13% )
 * /logout ( 0% )
 * /register ( .15% )
@@ -20,7 +20,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 
 * ~~Insert and manipulate expense~~
 * ~~Attach photo to expense _(there might be many - Woo Hoo!)_~~
-* Add show page for a single expense
+* ~~Add show page for a single expense~~
 * ~~Include Images (CD from CRUD) in edit Expense formular~~
 * Categories management
 * Monthly income management
@@ -35,6 +35,7 @@ And more... any thoughts?
 
 ### Problemy do rozwiązania / Problems to solve
 * ~~find **a way to stop upload** those images which passed their validation, when one of selected is not passed through its validation *(create Expense formular)*~~
+* ~~Expense - on delete - delete related images~~
 
 ###License
 

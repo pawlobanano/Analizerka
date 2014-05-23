@@ -19,13 +19,13 @@ Project which helps carrying personal finance. Made with intention to improve an
 **Features to implement**
 
 * ~~Insert and manipulate expense~~
-* ~~Attach photo to expense~~ _(there might be many!)_
+* ~~Attach photo to expense _(there might be many - Woo Hoo!)_~~
 * Add show page for a single expense
-* ~~Include Images (C_RU_D) in edit Expense formular~~
+* ~~Include Images (CD from CRUD) in edit Expense formular~~
 * Categories management
 * Monthly income management
 * ~~One place to rule them all... a dashboard landing page with some bootstrap graphic~~
-* **Fancy and mind-blowing charts** (presenting stored data)
+* **Fancy and mind-blowing charts** (to present stored data)
 * More users
     * register
     * login

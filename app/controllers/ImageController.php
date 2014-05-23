@@ -1,86 +1,38 @@
 <?php
 
-class ImageController extends BaseController {
-
-    /**
-     * Display a listing of the image.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for creating a new image.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
-     * Store a newly created image in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-
-    /**
-     * Display the specified image.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for editing the specified image.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-
-    /**
-     * Update the specified image in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-
+class ImageController extends BaseController
+{
     /**
      * Remove the specified image from storage.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return Response
      */
     public function destroy($id)
     {
-        //
+        $image = Image::find($id);
+
+        $uploadsPath = public_path() . '/uploads/';
+        $fileName    = $image->name;
+        $folderName  = $image->folder_name;
+        $folder      = $uploadsPath . $folderName;
+        $file        = $uploadsPath . $folderName . '/' . $fileName;
+
+        File::delete($file);
+        File::deleteDirectory($folder);
+
+        if (File::exists($file)) {
+            Session::flash('error', 'Something went wrong with deleting your image!');
+
+            return Redirect::back();
+        }
+
+        // Actual database entity deletion
+        $image->delete();
+
+        Session::flash('success', 'Successfully deleted the image!');
+
+        return Redirect::back();
     }
-
 }
-

@@ -28,11 +28,4 @@ class Expense extends Eloquent
     {
         return $this->hasMany('Image');
     }
-
-    public static function validate($input)
-    {
-        $expValidator = Validator::make($input, self::$rules);
-
-        return $expValidator;
-    }
 }

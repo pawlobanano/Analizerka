@@ -35,18 +35,18 @@ Expense Edit
 
     <div class="panel-body">
 
-        {{ Form::model($expense, ['route' => ['expense.update', $expense->id], 'method' => 'PATCH'], ['class' => 'form-horizontal', 'role' => 'form']) }}
+        {{ Form::model($expense, ['route' => ['expense.update', $expense->id], 'method' => 'PATCH', 'class' => 'form-horizontal', 'role' => 'form', 'files' => true]) }}
 
 
         <!-- todo -> get user_id from current session -->
         {{ Form::hidden('user_id', '1') }}
 
 
-        @foreach( $errors->get('date') as $message )
+        @foreach ($errors->get('date') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('date') )
+        @if ($errors->has('date'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -66,11 +66,11 @@ Expense Edit
         </div>
 
 
-        @foreach( $errors->get('value') as $message )
+        @foreach ($errors->get('value') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('value') )
+        @if ($errors->has('value'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -80,11 +80,11 @@ Expense Edit
         </div>
 
 
-        @foreach( $errors->get('comment') as $message )
+        @foreach ($errors->get('comment') as $message)
             <p class="text-danger">{{ $message }}</p>
         @endforeach
 
-        @if ( $errors->has('comment') )
+        @if ($errors->has('comment'))
             <div class="form-group input-group has-error">
         @else
             <div class="form-group input-group">
@@ -94,12 +94,49 @@ Expense Edit
         </div>
 
 
-        {{ Form::submit('Edit the Expense!', ['class' =>'btn btn-primary']) }}
+        @foreach ($errors->get('image') as $message)
+            <p class="text-danger">{{ $message }}</p>
+        @endforeach
 
-        <a href="{{ URL::route('expense.index') }}" class="btn btn-info">Expenses list</a>
+        @if ($errors->has('image'))
+            <div class="form-group input-group has-error">
+        @else
+            <div class="form-group input-group">
+        @endif
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file" style="background-color: #eee">
+                    <i class="fa fa-picture-o fa-lg"></i> Browse {{ Form::file('image[]', ['class' => 'form-control', 'multiple' => true]) }}
+                </span>
+            </span>
+            {{ Form::text(null, null, ['class' => 'form-control', 'readonly' => '']) }}
+        </div>
 
+        <p style="margin-bottom: 25px">
+            {{ Form::submit('Edit the Expense!', ['class' =>'btn btn-primary']) }}
+            <a href="{{ URL::route('expense.index') }}" class="btn btn-info">Expenses list</a>
+        </p>
 
         {{ Form::close() }}
+
+
+        <div class="row">
+            @foreach ($images as $image)
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="margin-bottom: 10px">
+
+                    <a href="{{ URL::asset('uploads') }}/{{ $image->folder_name }}/{{ $image->name }}">
+                        <img src="{{ URL::asset('uploads') }}/{{ $image->folder_name }}/{{ $image->name }}" alt="{{ $image->name }}" class="img-thumbnail center-block" />
+                    </a>
+
+                    {{ Form::open(['route' => ['image.destroy', $image->id], 'method' => 'DELETE']) }}
+                        <p class="help-block text-center small">
+                            {{ $image->name }}
+                            <button type="submit" class="btn btn-danger btn-xs" onclick="if(!confirm('I\'ll do it!')){return false;};"><i class="fa fa-trash-o fa-fw"></i></button>
+                        </p>
+                    {{ Form::close() }}
+
+                </div>
+            @endforeach
+        </div>
 
     </div>
     <!-- /.panel-body -->

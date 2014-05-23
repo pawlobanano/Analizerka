@@ -32,14 +32,11 @@ class ExpenseController extends BaseController
     /**
      * Store a newly created expense in storage.
      *
-     * @todo there is no image form input validation working right now!
-     *
      * @return Response
      */
     public function store()
     {
-        // Trying to keep Controller skinny (must learn it finally)
-        $expValidator = Expense::validate(Input::all());
+        $expValidator = Validator::make(Input::all(), Expense::$rules);
 
         // Expense part
         if ($expValidator->fails()) {
@@ -56,7 +53,6 @@ class ExpenseController extends BaseController
         $value                = str_replace(',', '.', Input::get('value'));
         $expense->value       = number_format($value, 2, '.', '');
         $expense->comment     = Input::get('comment');
-        $expense->save();
 
         // Image part
         if (Input::hasFile('image') && $expValidator->passes()) {
@@ -114,6 +110,9 @@ class ExpenseController extends BaseController
                     $fileName   = $file->getClientOriginalName();
                     $file->move(public_path('uploads/' . $folderName . '/'), $fileName);
 
+                    // First scenario - there is a number of photos attached
+                    $expense->save();
+
                     // Bring Image model with newly created Expense id and insert information to it!
                     $expenseId          = $expense->id;
                     $image              = new Image();
@@ -124,6 +123,9 @@ class ExpenseController extends BaseController
                 }
             }
         }
+
+        // Second scenario - there is NO photo attached
+        $expense->save();
 
         Session::flash('success', 'Successfully created expense!');
 
@@ -155,18 +157,17 @@ class ExpenseController extends BaseController
     {
         $categories = Category::orderBy('name', 'asc')->lists('name', 'id');
         $expense    = Expense::find($id);
-        $image = Image::whereHas('expense', function($query) use ($id) {
+        $images     = Image::whereHas('expense', function ($query) use ($id) {
             $query->where('id', $id);
         })->get();
-
-//        dd($image[0]);
 
         // Change for view standard
         $expense->date = date("d-m-Y", strtotime($expense->date));
 
         return View::make('expense.edit', [
             'categories' => $categories,
-            'expense'    => $expense
+            'expense'    => $expense,
+            'images'     => $images
         ]);
     }
 
@@ -180,28 +181,99 @@ class ExpenseController extends BaseController
      */
     public function update($id)
     {
-        $validator = Validator::make(Input::all(), Expense::$rules);
+        $expValidator = Validator::make(Input::all(), Expense::$rules);
 
-        if ($validator->fails()) {
-            Session::flash('error', 'Something goes wrong!');
+        // Expense part
+        if ($expValidator->fails()) {
+            Session::flash('error', 'Something went wrong!');
 
-            return Redirect::route('expense.edit', $id)
-                ->withErrors($validator)
-                ->withInput();
-        } else {
-            $expense              = Expense::find($id);
-            $expense->user_id     = Input::get('user_id');
-            $expense->date        = new DateTime(Input::get('date'));
-            $expense->category_id = Input::get('category_id');
-            $value                = str_replace(',', '.', Input::get('value'));
-            $expense->value       = number_format($value, 2, '.', '');;
-            $expense->comment = Input::get('comment');
-            $expense->save();
-
-            Session::flash('success', 'Successfully updated expense!');
-
-            return Redirect::back()->withInput();
+            return Redirect::route('expense.edit', $id)->withErrors($expValidator);
         }
+
+        $expense              = Expense::find($id);
+        $expense->user_id     = Input::get('user_id');
+        $expense->date        = new DateTime(Input::get('date'));
+        $expense->category_id = Input::get('category_id');
+        $value                = str_replace(',', '.', Input::get('value'));
+        $expense->value       = number_format($value, 2, '.', '');;
+        $expense->comment     = Input::get('comment');
+
+        // Image part
+        if (Input::hasFile('image') && $expValidator->passes()) {
+
+            $allImages = Input::file('image');
+
+            // Make sure it really is an array
+            if (!is_array($allImages)) {
+                $allImages = [$allImages];
+            }
+            $errorMessages = [];
+            $validFiles    = [];
+
+            // Loop through all uploaded images and validate them
+            foreach ($allImages as $file) {
+
+                // Ignore array member if it's not an UploadedFile object, just to be extra safe
+                if (!is_a($file, 'Symfony\Component\HttpFoundation\File\UploadedFile')) {
+                    continue;
+                }
+
+                $imgValidator = Validator::make(
+                    ['image' => $file],
+                    Image::$rules
+                );
+
+                // isValid() = image successfully uploaded
+                if ($file->isValid() && $imgValidator->passes()) {
+
+                    // Make a list with a valid files
+                    $validFiles[] = $file->getClientOriginalName();
+
+                } else {
+                    foreach ($imgValidator->messages()->all() as $key => $message) {
+                        $errorFileName            = ($key > 0 ? "" : '\'' . $file->getClientOriginalName() . '\':<br>');
+                        $errorMessages['image'][] = $errorFileName . '<p class="help-block">' . $message . '</p>';
+                    }
+                }
+            }
+
+            if (!empty($errorMessages)) {
+                // Return, redirect with flash message
+                Session::flash('error', 'Something went wrong with one of your image!');
+
+                return Redirect::route('expense.edit', $id)->withErrors($errorMessages);
+            }
+
+            // Loop through all uploaded images and save them
+            foreach ($allImages as $file) {
+                // Upload and save into database ONLY if all files passed validation
+                if (count($allImages) == count($validFiles)) {
+
+                    // Make directories and put there files
+                    $folderName = str_random(12);
+                    $fileName   = $file->getClientOriginalName();
+                    $file->move(public_path('uploads/' . $folderName . '/'), $fileName);
+
+                    // Second scenario - there is a number of photos attached
+                    $expense->save();
+
+                    // Bring Image model with newly created Expense id and insert information to it!
+                    $expenseId          = $expense->id;
+                    $image              = new Image();
+                    $image->expense_id  = $expenseId;
+                    $image->folder_name = $folderName;
+                    $image->name        = $fileName;
+                    $image->save();
+                }
+            }
+        }
+
+        // First scenario - there is NO photo attached
+        $expense->save();
+
+        Session::flash('success', 'Successfully edited expense!');
+
+        return Redirect::back();
     }
 
 
@@ -221,6 +293,4 @@ class ExpenseController extends BaseController
 
         return Redirect::back();
     }
-
-
 }

@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Hello traveller!</a>
+                <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Greetings, traveler!</a>
 
             </div>
             <!-- /.navbar-header -->

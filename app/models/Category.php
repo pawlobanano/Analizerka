@@ -2,9 +2,7 @@
 
 class Category extends Eloquent
 {
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
 
     public $timestamps = false;
 

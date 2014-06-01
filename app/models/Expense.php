@@ -2,9 +2,7 @@
 
 class Expense extends Eloquent
 {
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
 
     public static $rules = [
         'user_id'     => 'required|integer',

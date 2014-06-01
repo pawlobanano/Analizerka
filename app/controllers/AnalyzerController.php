@@ -10,15 +10,28 @@ class AnalyzerController extends BaseController
      */
     public function index()
     {
-        /*// listen to the queries and output them to learn!
-        Event::listen('illuminate.query', function ($sql) {
-            var_dump($sql);
-        });
-        echo '<br><br><br><br>';*/
+        // Wszystkie wydatki z bieżącego miesiąca zsumowane i odjęte od przychodu w tym miesiącu
+        // dla danego użytkownika
+        $user_id   = 1;
+        $currYear  = date("Y");
+        $currMonth = date("m");
+        $startDate = $currYear . '-' . $currMonth . '-' . 01;
+        $endDate   = $currYear . '-' . $currMonth . '-' . 31;
 
-        $expenses = Expense::all();
+        $currentMonthBalance = DB::table('expenses')
+            ->whereBetween('date', [
+                $startDate,
+                $endDate
+            ])
+            ->having('user_id', '=', $user_id)
+            ->get();
 
-        return View::make('analyzer.index')->with('expenses', $expenses);
+//        dd($currentMonthBalance);
+
+        return View::make('analyzer.index')->with([
+            'currentMonthBalance' => $currentMonthBalance,
+            'dataTables'          => false
+        ]);
     }
 
 

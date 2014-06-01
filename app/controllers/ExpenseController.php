@@ -12,7 +12,10 @@ class ExpenseController extends BaseController
     {
         $expenses = Expense::with('category')->get();
 
-        return View::make('expense.index', ['expenses' => $expenses]);
+        return View::make('expense.index')->with([
+            'expenses'   => $expenses,
+            'dataTables' => true
+        ]);
     }
 
 
@@ -25,7 +28,10 @@ class ExpenseController extends BaseController
     {
         $categories = Category::all();
 
-        return View::make('expense.create', ['categories' => $categories]);
+        return View::make('expense.create')->with([
+            'categories' => $categories,
+            'dataTables' => false
+        ]);
     }
 
 
@@ -151,9 +157,10 @@ class ExpenseController extends BaseController
         $expense->date  = date("d.m.Y", strtotime($expense->date));
         $expense->value = str_replace('.', ',', $expense->value);
 
-        return View::make('expense.show', [
+        return View::make('expense.show')->with([
             'expense' => $expense,
-            'images'  => $images
+            'images'  => $images,
+            'dataTables' => false
         ]);
     }
 
@@ -176,10 +183,11 @@ class ExpenseController extends BaseController
         // Change for view standard
         $expense->date = date("d-m-Y", strtotime($expense->date));
 
-        return View::make('expense.edit', [
+        return View::make('expense.edit')->with([
             'categories' => $categories,
             'expense'    => $expense,
-            'images'     => $images
+            'images'     => $images,
+            'dataTables' => false
         ]);
     }
 

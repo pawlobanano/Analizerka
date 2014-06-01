@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Eloquent::unguard();
+//        Eloquent::unguard();//In case there are some problems with mass assign
 
         $this->call('UserTableSeeder');
         $this->call('MonthTableSeeder');

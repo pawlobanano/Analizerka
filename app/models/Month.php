@@ -2,9 +2,7 @@
 
 class Month extends Eloquent
 {
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
 
     public $timestamps = false;
 

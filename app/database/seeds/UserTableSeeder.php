@@ -9,17 +9,17 @@ class UserTableSeeder extends Seeder
 
         $users = [
             [
-                'username' => 'Pierwszy',
+                'login' => 'Pierwszy',
                 'email'    => 'pierwszy@wp.pl',
                 'password' => Hash::make('pierwsze-hasełko')
             ],
             [
-                'username' => 'Drugi',
+                'login' => 'Drugi',
                 'email'    => 'drugi@o2.pl',
                 'password' => Hash::make('drugie-hasełko')
             ],
             [
-                'username' => 'Trzeci',
+                'login' => 'Trzeci',
                 'email'    => 'trzeci@interia.pl',
                 'password' => Hash::make('trzecie-hasełko')
             ]

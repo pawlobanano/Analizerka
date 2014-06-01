@@ -2,9 +2,7 @@
 
 class User extends Eloquent
 {
-    protected $guarded = [
-        'id'
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -14,13 +12,23 @@ class User extends Eloquent
     protected $hidden = ['password'];
 
     public static $rules = [
-        'username' => 'required|unique',
+        'login'    => 'required|unique',
         'password' => 'required|min:6',
-        'email' => 'required|email'
+        'email'    => 'required|email'
     ];
 
     public function expenses()
     {
         return $this->hasMany('Expense');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany('Category');
+    }
+
+    public function images()
+    {
+        return $this->hasManyThrough('Image', 'Expense');
     }
 }

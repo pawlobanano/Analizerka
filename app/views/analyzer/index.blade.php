@@ -17,13 +17,13 @@ Home Page
         <div id="page-wrapper">
 
             <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
+                <li class="active">Overview</li>
             </ol>
 
             <div class="row">
                 <div class="col-lg-12">
 
-                    <h1>Placeholder 1</h1>
+                    <h1>Saldo</h1>
 
                 </div>
                 <!-- /.col-lg-12 -->

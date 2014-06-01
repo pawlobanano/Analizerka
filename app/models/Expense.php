@@ -2,6 +2,8 @@
 
 class Expense extends Eloquent
 {
+    protected $softDelete = true;
+
     protected $guarded = ['id'];
 
     public static $rules = [

@@ -24,6 +24,7 @@ class CreateExpensesTable extends Migration
             $table->float('value', 9, 2);
             $table->string('comment', 255)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

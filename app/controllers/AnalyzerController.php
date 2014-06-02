@@ -65,7 +65,7 @@ class AnalyzerController extends BaseController
         $wynik[] = [];
         // Dla każdego wyniku sprawdzić kategorię i budować jej sumę
         foreach ($expenses as $expense) {
-            dd($expense->category->name);
+//            dd($expense->category->name);
             foreach ($expense->category->name as $category) {
                 $wynik[] = $category;
             }

@@ -62,16 +62,16 @@ class AnalyzerController extends BaseController
 
 
 
-        $wynik[] = [];
-        // Dla każdego wyniku sprawdzić kategorię i budować jej sumę
-        foreach ($expenses as $expense) {
-//            dd($expense->category->name);
-            foreach ($expense->category->name as $category) {
-                $wynik[] = $category;
-            }
-        }
-        $total = Expense::with('categories')->sum('value');
-//        dd($wynik);
+//        $wynik[] = [];
+//        // Dla każdego wyniku sprawdzić kategorię i budować jej sumę
+//        foreach ($expenses as $expense) {
+////            dd($expense->category->name);
+//            foreach ($expense->category->name as $category) {
+//                $wynik[] = $category;
+//            }
+//        }
+//        $total = Expense::with('categories')->sum('value');
+////        dd($wynik);
 
         return View::make('analyzer.index')->with([
 //            'currMonthBalance' => $currMonthBalance,

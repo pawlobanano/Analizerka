@@ -35,7 +35,7 @@ Home Page
                     <div class="panel panel-default">
                         <div class="panel-body">
 
-                            Placeholder 1
+                            <div id="container" style="width:100%; height:400px;"></div>
 
                         </div>
                         <!-- /.panel-body -->

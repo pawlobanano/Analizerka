@@ -10,10 +10,9 @@ Project which helps carrying personal finance. Made with intention to improve an
 **Routes - features available** (*estimated % done*)
 
 * / ( 5% )
-* /expense (create, read, update, delete) + validation + photos (create, delete) ( 96.86% )
-* /login ( .13% )
-* /logout ( 0% )
-* /register ( .15% )
+* /expense (create, read, update, delete) + validation + photos (create, delete) ( 96.87% )
+* /categories (create, read, update, delete) + validation ( .13% )
+* /monthly-incomes (create, read, update, delete) + validation ( 0% )
 
 ### Co pozostaje do zrobienia / What's more to implement
 **Features to implement**
@@ -21,15 +20,12 @@ Project which helps carrying personal finance. Made with intention to improve an
 * ~~Insert and manipulate expense~~
 * ~~Attach photo to expense _(there might be many - Woo Hoo!)_~~
 * ~~Add show page for a single expense~~
-* ~~Include Images (CD from CRUD) in edit Expense formular~~
+* ~~Include Images (CD from CRUD) in edit Expense form~~
 * Categories management
 * Monthly income management
 * ~~One place to rule them all... a dashboard landing page with some bootstrap graphic~~
-* **Fancy and mind-blowing charts** (to present stored data)
-* More users
-    * register
-    * login
-    * logout
+* **Fancy and mind-blowing charts** (to present stored financial data)
+* More users (register, login, logout)
 
 And more... any thoughts?
 

@@ -6,7 +6,7 @@
 
 
         @section('title')
-        Analizerka |
+            Analizerka |
         @show
 
 

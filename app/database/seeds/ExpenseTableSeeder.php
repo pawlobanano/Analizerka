@@ -11,11 +11,35 @@ class ExpenseTableSeeder extends Seeder
 
         $expenses = [
             [
-                'user_id'     => '3',
+                'user_id'     => '1',
+                'category_id' => '4',
+                'date'        => '2014-06-25',
+                'value'       => '25.25',
+                'comment'     => '<3',
+                'created_at'  => '2014-01-02 08:00:00'
+            ],
+            [
+                'user_id'     => '1',
                 'category_id' => '3',
-                'date'        => $date,
-                'value'       => '34.66',
-                'comment'     => '',
+                'date'        => '2014-06-14',
+                'value'       => '14.14',
+                'comment'     => '!',
+                'created_at'  => '2014-01-02 08:00:00'
+            ],
+            [
+                'user_id'     => '1',
+                'category_id' => '2',
+                'date'        => '2014-06-09',
+                'value'       => '19.09',
+                'comment'     => 'nic!',
+                'created_at'  => '2014-01-02 08:00:00'
+            ],
+            [
+                'user_id'     => '1',
+                'category_id' => '1',
+                'date'        => '2014-06-04',
+                'value'       => '11.11',
+                'comment'     => 'A nie napiszę nic!',
                 'created_at'  => '2014-01-02 08:00:00'
             ],
             [
@@ -61,7 +85,7 @@ class ExpenseTableSeeder extends Seeder
             [
                 'user_id'     => '1',
                 'category_id' => '3',
-                'date'        => $date,
+                'date'        => '2014-05-23',
                 'value'       => '84.29',
                 'comment'     => 'Kocham kino!',
                 'created_at'  => '2014-01-20 14:00:00'

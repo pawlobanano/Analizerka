@@ -86,7 +86,7 @@ Expense Create
             <div class="form-group input-group">
         @endif
             <span class="input-group-addon">Comment</span>
-                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'A comment maybe?', 'rows' => '3']) }}
+                {{ Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'A comment maybe?', 'rows' => '2']) }}
         </div>
 
 
@@ -104,7 +104,7 @@ Expense Create
                     <i class="fa fa-picture-o fa-lg"></i> Browse {{ Form::file('image[]', ['class' => 'form-control', 'multiple' => true]) }}
                 </span>
             </span>
-            {{ Form::text(null, null, ['class' => 'form-control', 'readonly' => '']) }}
+            {{ Form::text(null, null, ['class' => 'form-control', 'readonly' => 'readonly']) }}
         </div>
 
 

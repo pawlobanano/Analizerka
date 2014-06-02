@@ -148,6 +148,9 @@
     <!-- SB Admin Scripts - Include with every page -->
     <script src="{{ asset('vendor/sb-admin-v2/js/sb-admin.js') }}"></script>
 
+    <!-- Highcharts -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>

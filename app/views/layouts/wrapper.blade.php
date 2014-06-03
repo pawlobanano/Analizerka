@@ -3,7 +3,7 @@
 
 @section('header-styles')
     <!-- Core CSS - Include with every page -->
-    <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/font-awesome/css/font-awesome.css') }}"/>
 
     <!-- SB Admin CSS - Include with every page -->
@@ -18,146 +18,121 @@
 
 
 @section('wrapper')
-    <div id="wrapper">
+<div id="wrapper">
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
 
-            <div class="navbar-header">
+        <div class="navbar-header">
 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-                <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Greetings, traveler!</a>
+            <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Greetings, traveler! <span class="label label-info">Alpha</span></a>
 
-            </div>
-            <!-- /.navbar-header -->
+        </div><!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-right">
 
-                <li class="dropdown">
+            <li><a href="{{ URL::route('expense.create') }}"><i class="fa fa-plus fa-fw"></i></a></li>
 
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
+            <li class="dropdown">
 
-                    <ul class="dropdown-menu dropdown-user-right">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
 
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
+                <ul class="dropdown-menu dropdown-user-right">
 
-                        <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+                    <li>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
 
-                        <li class="divider"></li>
+                    <li>
+                        <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+                    </li>
 
-                        <li>
-                            <a href="{{ action('UserController@logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
+                    <li class="divider"></li>
 
-                    </ul>
-                    <!-- /.dropdown-user -->
+                    <li>
+                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
 
-                </li>
-                <!-- /.dropdown -->
+                </ul><!-- /.dropdown-user -->
 
-            </ul>
-            <!-- /.navbar-top-links -->
+            </li><!-- /.dropdown -->
 
-            <div class="navbar-default navbar-static-side" role="navigation">
+        </ul><!-- /.navbar-top-links -->
 
-                <div class="sidebar-collapse">
+        <div class="navbar-default navbar-static-side" role="navigation">
 
-                    <ul class="nav" id="side-menu">
+            <div class="sidebar-collapse">
 
-                        @include('sub-view.searchBar', ['dataTables' => $dataTables])
+                <ul class="nav" id="side-menu">
 
-                        <li>
-                            <a href="{{ URL::route('index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
+                    @include('sub-view.searchBar', ['dataTables' => $dataTables])
 
-                        <li>
-                            <a href="{{ URL::route('expense.index') }}"><i class="fa fa-table fa-fw"></i> Expenses<span class="fa arrow"></span></a>
+                    <li>
+                        <a href="{{ URL::route('index') }}"><i class="fa fa-home fa-fw"></i> Overview</a>
+                    </li>
 
-                            <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ URL::route('expense.index') }}"><i class="fa fa-list-ol fa-fw"></i> Expenses history</a>
+                    </li>
 
-                                <li>
-                                    <a href="{{ URL::route('expense.index') }}"><i class="fa fa-list-ol fa-fw"></i> List</a>
-                                </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+                    </li>
 
-                                <li>
-                                    <a href="{{ URL::route('expense.create') }}"><i class="fa fa-plus fa-fw"></i> Create</a>
-                                </li>
+                    <li>
+                        <a href="#"><i class="fa fa-money fa-fw"></i> Monthly incomes</a>
+                    </li>
 
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                    <li>
+                        <a href="#"><i class="fa fa-tags fa-fw"></i> Categories</a>
+                    </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts placeholder<span class="fa arrow"></span></a>
+                </ul><!-- /#side-menu -->
 
-                            <ul class="nav nav-second-level">
+            </div><!-- /.sidebar-collapse -->
 
-                                <li>
-                                    <a href="{{ URL::route('index') }}">Chart 1</a>
-                                </li>
+        </div><!-- /.navbar-static-side -->
 
-                                <li>
-                                    <a href="{{ URL::route('index') }}">Chart 2</a>
-                                </li>
+    </nav><!-- /.navbar navbar-default navbar-fixed-top -->
 
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+    @yield('page-wrapper')
 
-                    </ul>
-                    <!-- /#side-menu -->
-
-                </div>
-                <!-- /.sidebar-collapse -->
-
-            </div>
-            <!-- /.navbar-static-side -->
-
-        </nav>
-
-        @yield('page-wrapper')
-
-        @section('footer')
+    @section('footer')
         <div class="footer text-center">
-            &copy; 2014 <a href="https://github.com/pawlobanano" target="_blank">@pawlobanano</a>
+            &copy;
+            2014 <a href="https://github.com/pawlobanano">@pawlobanano</a>
         </div>
-        @show
+    @show
 
-    </div>
-    <!-- /#wrapper -->
+</div><!-- /#wrapper -->
 @stop
 
 
 @section('footer-scripts')
-    <!-- Core Scripts - Include with every page -->
+<!-- Core Scripts - Include with every page -->
     <script src="{{ asset('vendor/sb-admin-v2/js/jquery-1.10.2.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-progressbar.min.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
 
-    <!-- SB Admin Scripts - Include with every page -->
+<!-- SB Admin Scripts - Include with every page -->
     <script src="{{ asset('vendor/sb-admin-v2/js/sb-admin.js') }}"></script>
 
-    <!-- Highcharts -->
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-
-    <!-- Page-Level Plugin Scripts - Tables -->
+<!-- Page-Level Plugin Scripts - Tables -->
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
 
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/datePicker/jquery-ui-1.10.4.datePicker.min.js') }}"></script>
 
-    <!-- Page-Level Plugin - DataTables -->
+<!-- Page-Level Plugin - DataTables -->
     <script>
         // DataTables configuration
         oTable = $('#expensesTable').dataTable({
@@ -174,7 +149,7 @@
 
         // Input file helper
         $(document)
-            .on('change', '.btn-file :file', function() {
+            .on('change', '.btn-file :file', function () {
                 var input = $(this),
                     numFiles = input.get(0).files ? input.get(0).files.length : 1,
                     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -182,23 +157,23 @@
             });
 
         // Input file helper
-        $(document).ready( function() {
-            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
                 var input = $(this).parents('.input-group').find(':text'),
                     log = numFiles > 1 ? numFiles + ' files selected' : label;
 
-                if( input.length ) {
+                if (input.length) {
                     input.val(log);
                 } else {
-                    if( log ) alert(log);
+                    if (log) alert(log);
                 }
 
             });
         });
 
         // DatePicker (from jQuery UI)
-        $('input[name = date]').datepicker( {
+        $('input[name = date]').datepicker({
             dateFormat: 'dd-mm-yy',
             firstDay: 1,
             showWeek: true,
@@ -207,5 +182,8 @@
             showOtherMonths: true,
             selectOtherMonths: true
         });
+
+        // bootstrap-progressbar v0.7.1
+        $('.progress .progress-bar').progressbar();
     </script>
 @stop

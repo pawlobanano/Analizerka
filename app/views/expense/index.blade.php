@@ -31,9 +31,9 @@ Expenses List
                 <div class="alert alert-danger">{{ Session::get('error') }}</div>
             @endif
 
-            <div class="panel panel-default">
+            <div class="panel-body">
 
-                <div class="panel-body">
+                <div class="row">
 
                     <div class="table-responsive">
 
@@ -72,23 +72,17 @@ Expenses List
                             </tbody>
                         </table>
 
-                    </div>
-                    <!-- /.table-responsive -->
+                    </div><!-- /.table-responsive -->
 
-                </div>
-                <!-- /.panel-body -->
+                </div><!-- /.row -->
 
-            </div>
-            <!-- /.panel -->
+            </div><!-- /.panel-body -->
 
-        </div>
-        <!-- /.col-lg-12 -->
+        </div><!-- /.col-lg-12 -->
 
-    </div>
-    <!-- /.row -->
+    </div><!-- /.row -->
 
-</div>
-<!-- /#page-wrapper -->
+</div><!-- /#page-wrapper -->
 @show
 
 @stop

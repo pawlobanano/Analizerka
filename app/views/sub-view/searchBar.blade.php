@@ -1,4 +1,5 @@
 @if ($dataTables)
+
     <li class="sidebar-search">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search..." id="mainSearch">
@@ -7,6 +8,7 @@
                 <i class="fa fa-search"></i>
             </button>
             </span>
-        </div><!-- /input-group -->
+        </div><!-- /.input-group custom-search-form-->
     </li>
+
 @endif

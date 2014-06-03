@@ -28,8 +28,11 @@ class ExpenseController extends BaseController
     {
         $categories = Category::all();
 
+        $today = (new DateTime())->format('d-m-Y');
+
         return View::make('expense.create')->with([
             'categories' => $categories,
+            'today'      => $today,
             'dataTables' => false
         ]);
     }
@@ -158,8 +161,8 @@ class ExpenseController extends BaseController
         $expense->value = str_replace('.', ',', $expense->value);
 
         return View::make('expense.show')->with([
-            'expense' => $expense,
-            'images'  => $images,
+            'expense'    => $expense,
+            'images'     => $images,
             'dataTables' => false
         ]);
     }

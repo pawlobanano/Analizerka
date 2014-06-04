@@ -41,7 +41,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sliders fa-fw"></i> Settings</a>
+                        <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings</a>
                     </li>
 
                     <li class="divider"></li>
@@ -86,7 +86,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ URL::route('expense.index') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
                     </li>
 
                     <li>

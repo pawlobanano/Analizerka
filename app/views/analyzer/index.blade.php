@@ -27,55 +27,63 @@ Home Page
         <div class="alert alert-danger">{{ Session::get('error') }}</div>
     @endif
 
-    <div class="col-xs-12">
+    <div class="row">
 
-        <h3>{{ $month }}</h3>
+        <div class="col-xs-12">
 
-        <div class="panel panel-default">
+            <div class="col-xs-12">
 
-            <div class="panel-body">
+                <h3>{{ $month }}</h3>
 
-                <div class="row">
+                <div class="panel panel-default">
 
-                    <div class="col-xs-12 col-sm-6">
-                        <p>OVERALL</p>
-                        <h1 class="text-center"><strong>492,14</strong><small>zł</small></h1>
-                        <p class="small text-center"><i>1 350,15</i><small>zł</small> left of your month limit</p>
-                    </div>
+                    <div class="panel-body">
 
-                    <div id="chart" class="col-xs-12 col-sm-6">
+                        <div class="row">
 
-                        <p>EXPENSES</p>
+                            <div class="col-xs-12 col-sm-6">
+                                <p>OVERALL</p>
+                                <h1 class="text-center"><strong>492,14</strong><small>zł</small></h1>
+                                <p class="small text-center"><i>1 350,15</i><small>zł</small> left of your month limit</p>
+                            </div>
 
-                        <p class="text-success" style="margin: 0">Jedzenie i picie 55,95zł</p>
-                        <div class="progress" style="margin-bottom: 10px">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="40"></div>
-                        </div>
+                            <div id="chart" class="col-xs-12 col-sm-6">
 
-                        <p class="text-info" style="margin: 0">Transport 25,00zł</p>
-                        <div class="progress" style="margin-bottom: 10px">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuetransitiongoal="20"></div>
-                        </div>
+                                <p>EXPENSES</p>
 
-                        <p class="text-warning" style="margin: 0">Inne 155,39zł</p>
-                        <div class="progress" style="margin-bottom: 10px">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuetransitiongoal="60"></div>
-                        </div>
+                                <p class="text-success" style="margin: 0">Jedzenie i picie 55,95zł</p>
+                                <div class="progress" style="margin-bottom: 10px">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="40"></div>
+                                </div>
 
-                        <p class="text-danger" style="margin: 0">Zdrowie 255,80zł</p>
-                        <div class="progress" style="margin-bottom: 10px">
-                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuetransitiongoal="80"></div>
-                        </div>
+                                <p class="text-info" style="margin: 0">Transport 25,00zł</p>
+                                <div class="progress" style="margin-bottom: 10px">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuetransitiongoal="20"></div>
+                                </div>
 
-                    </div><!-- /#chart -->
+                                <p class="text-warning" style="margin: 0">Inne 155,39zł</p>
+                                <div class="progress" style="margin-bottom: 10px">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuetransitiongoal="60"></div>
+                                </div>
 
-                </div><!-- /.row -->
+                                <p class="text-danger" style="margin: 0">Zdrowie 255,80zł</p>
+                                <div class="progress" style="margin-bottom: 10px">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuetransitiongoal="80"></div>
+                                </div>
 
-            </div><!-- /.panel-body -->
+                            </div><!-- /#chart -->
 
-        </div><!-- /.panel -->
+                        </div><!-- /.row -->
 
-    </div><!-- /.col-xs-12 -->
+                    </div><!-- /.panel-body -->
+
+                </div><!-- /.panel panel-default -->
+
+            </div><!-- /.col-xs-12 -->
+
+        </div><!-- /.col-xs-12 -->
+
+    </div><!-- /.row -->
 
 </div><!-- /#page-wrapper -->
 @show

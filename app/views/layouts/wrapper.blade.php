@@ -22,6 +22,37 @@
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
 
+        <ul class="nav navbar-top-links navbar-right" style="float: right">
+
+            <li><a href="{{ URL::route('expense.create') }}"><i class="fa fa-plus fa-fw"></i></a></li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+
+                    <li>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sliders fa-fw"></i> Settings</a>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+
+                </ul><!-- /.dropdown-menu dropdown-menu-right -->
+
+            </li><!-- /.dropdown -->
+
+        </ul><!-- /.nav navbar-top-links navbar-right -->
+
         <div class="navbar-header">
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -34,38 +65,6 @@
             <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Greetings, traveler! <span class="label label-info">Alpha</span></a>
 
         </div><!-- /.navbar-header -->
-
-        <ul class="nav navbar-top-links navbar-right">
-
-            <li><a href="{{ URL::route('expense.create') }}"><i class="fa fa-plus fa-fw"></i></a></li>
-
-            <li class="dropdown">
-
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-
-                <ul class="dropdown-menu dropdown-user-right">
-
-                    <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings</a>
-                    </li>
-
-                    <li class="divider"></li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-
-                </ul><!-- /.dropdown-user -->
-
-            </li><!-- /.dropdown -->
-
-        </ul><!-- /.navbar-top-links -->
 
         <div class="navbar-default navbar-static-side" role="navigation">
 
@@ -84,7 +83,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+                        <a href="{{ URL::route('expense.index') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
                     </li>
 
                     <li>
@@ -106,9 +105,8 @@
     @yield('page-wrapper')
 
     @section('footer')
-        <div class="footer text-center">
-            &copy;
-            2014 <a href="https://github.com/pawlobanano">@pawlobanano</a>
+        <div class="text-center" style="padding: 10px; border-top: 1px solid #e7e7e7">
+            &copy; 2014 <a href="https://github.com/pawlobanano">@pawlobanano</a>
         </div>
     @show
 

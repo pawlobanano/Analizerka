@@ -21,37 +21,45 @@ Expense Show
         <li class="active">Show</li>
     </ol>
 
-    <div class="col-xs-12">
+    <div class="row">
 
-        <table class="table">
-            <tr>
-                <td style="border-top: 0; padding: 0"><h3>Expense</h3></td>
-                <td style="border-top: 0; padding: 0; vertical-align: middle">
-                    {{ Form::open(['route' => ['expense.destroy', $expense->id], 'method' => 'DELETE']) }}
-                        <a href="{{ URL::route('expense.edit', $expense->id) }}" class="btn btn-warning" role="button"><i class="fa fa-pencil fa-fw"></i></a>
-                        <button type="submit" class="btn btn-danger" onclick="if(!confirm('I\'ll do it!')){return false;};"><i class="fa fa-trash-o fa-fw"></i></button>
-                    {{ Form::close() }}
-                </td>
-            </tr>
-        </table>
+        <div class="col-xs-12">
 
-        <div class="col-xs-3">
-            <p class="text-right"><strong>Date</strong></p>
-            <p class="text-right"><strong>Category</strong></p>
-            <p class="text-right"><strong>Value</strong></p>
-            @if ($expense->comment) <p class="text-right"><strong>Comment</strong></p> @endif
-            @if (count($images)) <p class="text-right"><strong>Photos</strong></p> @endif
-        </div>
+            <div class="col-xs-12">
 
-        <div class="col-xs-9">
-            <p class="text-left">{{ $expense->date }}</p>
-            <p class="text-left">{{ $expense->category->name }}</p>
-            <p class="text-left">{{ $expense->value }}</p>
-            @if ($expense->comment) <p class="text-left">{{ $expense->comment }}</p> @endif
-            @if (count($images)) <p class="text-left">{{ count($images) }}</p> @endif
-        </div><!-- /.col-xs-9 -->
+                <table class="table">
+                    <tr>
+                        <td style="border-top: 0; padding: 0"><h3>Expense</h3></td>
+                        <td style="border-top: 0; padding: 0; vertical-align: middle">
+                            {{ Form::open(['route' => ['expense.destroy', $expense->id], 'method' => 'DELETE']) }}
+                                <a href="{{ URL::route('expense.edit', $expense->id) }}" class="btn btn-warning" role="button"><i class="fa fa-pencil fa-fw"></i></a>
+                                <button type="submit" class="btn btn-danger" onclick="if(!confirm('I\'ll do it!')){return false;};"><i class="fa fa-trash-o fa-fw"></i></button>
+                            {{ Form::close() }}
+                        </td>
+                    </tr>
+                </table>
 
-    </div><!-- /.col-xs-12 -->
+                <div class="col-xs-3">
+                    <p class="text-right"><strong>Date</strong></p>
+                    <p class="text-right"><strong>Category</strong></p>
+                    <p class="text-right"><strong>Value</strong></p>
+                    @if ($expense->comment) <p class="text-right"><strong>Comment</strong></p> @endif
+                    @if (count($images)) <p class="text-right"><strong>Photos</strong></p> @endif
+                </div>
+
+                <div class="col-xs-9">
+                    <p class="text-left">{{ $expense->date }}</p>
+                    <p class="text-left">{{ $expense->category->name }}</p>
+                    <p class="text-left">{{ $expense->value }}</p>
+                    @if ($expense->comment) <p class="text-left">{{ $expense->comment }}</p> @endif
+                    @if (count($images)) <p class="text-left">{{ count($images) }}</p> @endif
+                </div><!-- /.col-xs-9 -->
+
+            </div><!-- /.col-xs-12 -->
+
+        </div><!-- /.col-xs-12 -->
+
+    </div><!-- /.row -->
 
     @if (count($images))
         <div class="row">

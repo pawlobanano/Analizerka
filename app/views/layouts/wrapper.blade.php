@@ -2,12 +2,15 @@
 
 
 @section('header-styles')
-    <!-- Core CSS - Include with every page -->
+    <!-- Core CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/font-awesome/css/font-awesome.css') }}"/>
 
-    <!-- SB Admin CSS - Include with every page -->
+    <!-- SB Admin CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/css/sb-admin.css') }}"/>
+
+    <!-- Styles-override.css - CSS styles override -->
+    <link rel="stylesheet" href="{{ asset('css/styles-override.css') }}"/>
 
     <!-- Page-Level Plugin CSS - Tables -->
     <link rel="stylesheet" href="{{ asset('vendor/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css') }}"/>

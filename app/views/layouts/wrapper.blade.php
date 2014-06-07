@@ -37,17 +37,17 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li>
-                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <a href="#"><i class="fa fa-user fa-fw"></i> User Profile <span class="label label-default">Not ready</span></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings</a>
+                        <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings <span class="label label-default">Not ready</span></a>
                     </li>
 
                     <li class="divider"></li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout <span class="label label-default">Not ready</span></a>
                     </li>
 
                 </ul><!-- /.dropdown-menu dropdown-menu-right -->
@@ -65,7 +65,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Greetings, traveler! <span class="label label-info">Alpha</span></a>
+            <a href="{{ action('AnalyzerController@index') }}" class="navbar-brand">Analizerka <span class="label label-info">Alpha</span></a>
 
         </div><!-- /.navbar-header -->
 
@@ -86,15 +86,15 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics</a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics <span class="label label-default">Not ready</span></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-money fa-fw"></i> Monthly incomes</a>
+                        <a href="#"><i class="fa fa-money fa-fw"></i> Monthly incomes <span class="label label-default">Not ready</span></a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-tags fa-fw"></i> Categories</a>
+                        <a href="#"><i class="fa fa-tags fa-fw"></i> Categories <span class="label label-default">Not ready</span></a>
                     </li>
 
                 </ul><!-- /#side-menu -->
@@ -121,7 +121,7 @@
     <!-- Core Scripts - Include with every page -->
     <script src="{{ asset('vendor/sb-admin-v2/js/jquery-1.10.2.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-progressbar.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/bootstrap-progressbar.min.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
 
     <!-- SB Admin Scripts - Include with every page -->

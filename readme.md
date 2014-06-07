@@ -10,7 +10,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 * / (main landing page) ( ~50% )
 * /budget (create, read, update, delete) + validation ( 0% )
 * /categories (create, read, update, delete) + validation ( 0% )
-* /expense (create, read, update, delete) + photos (create, delete) + validation (for both) ( 99.87% )
+* /expense (create, read, update, delete) + photos (create, delete) + validation (for both) ( 99.89% )
 * /monthly-incomes (create, read, update, delete) + validation ( 0% )
 
 ### Co pozostaje do zrobienia / What's more to implement

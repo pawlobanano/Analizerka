@@ -45,7 +45,6 @@ Expenses List
                             <th>Category</th>
                             <th>Value</th>
                             <th>Comment</th>
-                            <th>Added</th>
                             <th>Options</th>
                         </tr>
                         </thead>
@@ -53,11 +52,10 @@ Expenses List
                         @foreach ($expenses as $key => $expense)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ date("d-m-Y", strtotime($expense->date)) }}</td>
+                            <td>{{{ $expense->date }}}</td>
                             <td>{{{ $expense->category->name or '' }}}</td>
-                            <td>{{ str_replace('.', ',', $expense->value) }}</td>
-                            <td>{{{ str_limit($expense->comment, $limit = 14, null) }}}</td>
-                            <td>{{ date("d-m-Y H:i", strtotime($expense->created_at)) }}</td>
+                            <td>{{{ $expense->value }}}</td>
+                            <td>{{{ $expense->comment, $limit = 14, null }}}</td>
                             <td>
                                 <div class="btn-group">
                                     {{ Form::open(['route' => ['expense.destroy', $expense->id], 'method' => 'DELETE']) }}

@@ -8,9 +8,9 @@ class Expense extends Eloquent
 
     public static $rules = [
         'user_id'     => 'required|integer',
-        'date'        => 'required|date_format:d-m-Y',
+        'date'        => 'required|date_format:d.m.Y',
         'category_id' => 'required|integer',
-        'value'       => 'required|regex:/^[1-9]+(?:\,[0-9]{1,2}+)?$/',
+        'value'       => 'required|regex:/^[0-9]+(?:\,[0-9]{1,2}+)?$/',
         'comment'     => 'Max:255'
     ];
 

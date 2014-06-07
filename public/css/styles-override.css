@@ -1,3 +1,6 @@
+.navbar-brand {
+    height: 50px;
+}
 .breadcrumb {
     margin-bottom: 5px;
 }

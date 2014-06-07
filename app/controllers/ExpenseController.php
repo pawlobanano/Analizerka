@@ -12,6 +12,13 @@ class ExpenseController extends BaseController
     {
         $expenses = Expense::with('category')->get();
 
+        // Change for view standard
+        foreach ($expenses as $expense) {
+            $expense->date    = date("d.m.Y", strtotime($expense->date));
+            $expense->value   = str_replace('.', ',', $expense->value);
+            $expense->comment = str_limit($expense->comment, $limit = 14, null);
+        }
+
         return View::make('expense.index')->with([
             'expenses'   => $expenses,
             'dataTables' => true
@@ -28,7 +35,7 @@ class ExpenseController extends BaseController
     {
         $categories = Category::all();
 
-        $today = (new DateTime())->format('d-m-Y');
+        $today = (new DateTime())->format('d.m.Y');
 
         return View::make('expense.create')->with([
             'categories' => $categories,
@@ -56,7 +63,7 @@ class ExpenseController extends BaseController
 
         $expense              = new Expense;
         $expense->user_id     = Input::get('user_id');
-        $date                 = DateTime::createFromFormat('d-m-Y', Input::get('date'));
+        $date                 = DateTime::createFromFormat('d.m.Y', Input::get('date'));
         $expense->date        = $date->format('Y-m-d'); // For the DB column standard
         $expense->category_id = Input::get('category_id');
         $value                = str_replace(',', '.', Input::get('value'));
@@ -115,7 +122,7 @@ class ExpenseController extends BaseController
                 if (count($allImages) == count($validFiles)) {
 
                     // Make directories and put there files
-                    $folderName = str_random(12);
+                    $folderName = str_random(12); // number = 12 was in tutorials
                     $fileName   = $file->getClientOriginalName();
                     $file->move(public_path('uploads/' . $folderName . '/'), $fileName);
 
@@ -184,7 +191,7 @@ class ExpenseController extends BaseController
         })->get();
 
         // Change for view standard
-        $expense->date = date("d-m-Y", strtotime($expense->date));
+        $expense->date = date("d.m.Y", strtotime($expense->date));
 
         return View::make('expense.edit')->with([
             'categories' => $categories,

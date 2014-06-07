@@ -44,6 +44,8 @@ Expense Show
                     <p class="text-right"><strong>Category</strong></p>
                     <p class="text-right"><strong>Value</strong></p>
                     @if ($expense->comment) <p class="text-right"><strong>Comment</strong></p> @endif
+                    <p class="text-right"><strong>Added</strong></p>
+                    @if ($expense->created_at != $expense->updated_at) <p class="text-right"><strong>Modified</strong></p> @endif
                     @if (count($images)) <p class="text-right"><strong>Photos</strong></p> @endif
                 </div>
 
@@ -52,6 +54,8 @@ Expense Show
                     <p class="text-left">{{ $expense->category->name }}</p>
                     <p class="text-left">{{ $expense->value }}</p>
                     @if ($expense->comment) <p class="text-left">{{ $expense->comment }}</p> @endif
+                    <p>{{ date("d.m.Y H:i", strtotime($expense->created_at)) }}</p>
+                    @if ($expense->created_at != $expense->updated_at) <p>{{ date("d.m.Y H:i", strtotime($expense->updated_at)) }}</p> @endif
                     @if (count($images)) <p class="text-left">{{ count($images) }}</p> @endif
                 </div><!-- /.col-xs-9 -->
 

@@ -22,9 +22,9 @@ Home Page
 
     <!-- will be used to show any messages -->
     @if (Session::has('success'))
-        <div class="alert alert-success">{{ Session::get('success') }}</div>
+        <div class="alert alert-success" style="margin: 20px 0 0">{{ Session::get('success') }}</div>
     @elseif (Session::has('error'))
-        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+        <div class="alert alert-danger" style="margin: 20px 0 0">{{ Session::get('error') }}</div>
     @endif
 
     <div class="row">
@@ -51,7 +51,7 @@ Home Page
 
                                 <p>EXPENSES</p>
 
-                                <p class="text-success" style="margin: 0">Jedzenie i picie 55,95zł</p>
+                                <p class="text-success" style="margin: 0">Art. spożywcze 55,95zł</p>
                                 <div class="progress" style="margin-bottom: 10px">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="40"></div>
                                 </div>

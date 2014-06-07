@@ -51,7 +51,7 @@ Expense Create
                                 <div class="form-group input-group">
                             @endif
                                     <span class="input-group-addon">Date</span>
-                                        {{ Form::text('date', $today, ['class' => 'form-control', 'placeholder' => '11-11-2014']) }}
+                                        {{ Form::text('date', $today, ['class' => 'form-control', 'placeholder' => '04.07.2014']) }}
                                 </div><!-- /.form-group -->
 
                         </div><!-- /.col-xs-12 -->

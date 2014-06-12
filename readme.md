@@ -3,6 +3,7 @@ Available @ **[Analizerka / Personal finance analyzer](http://analizerka.glt.pl)
 
 ### O co chodzi?  / What is it?
 Project which helps carrying personal finance. Made with intention to improve and eventually displace 'the spreadsheet' way of finance conducting.
+Furthermore, it helps me get to know better with Laravel framework.
 
 ### Co działa / What is working
 **Routes - features available** (*estimated % done*)
@@ -10,7 +11,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 * / (main landing page) ( ~50% )
 * /budget (create, read, update, delete) + validation ( 0% )
 * /categories (create, read, update, delete) + validation ( 0% )
-* /expense (create, read, update, delete) + photos (create, delete) + validation (for both) ( 99.89% )
+* /expense (create, read, update, delete) + photos (create, delete) + validation (for both) ( 100% )
 * /monthly-incomes (create, read, update, delete) + validation ( 0% )
 
 ### Co pozostaje do zrobienia / What's more to implement
@@ -40,6 +41,7 @@ Project which helps carrying personal finance. Made with intention to improve an
 And more... any thoughts?
 
 ### Problemy do rozwiązania / Problems to solve
+* Work on optimal solution to have finance balance on demand (it should be new table row in DB; should include summary of all-time incomes and expenses)
 * **Prepare SQL queries** for required charts and other data representations
 * Moving menu button all to the right on mobile devices (button .navbar-toggle)
 * ~~Expense - on delete - delete related images~~

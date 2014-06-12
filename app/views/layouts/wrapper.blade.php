@@ -123,6 +123,7 @@
     <script src="{{ asset('vendor/sb-admin-v2/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins/bootstrap-progressbar.min.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('vendor/sb-admin-v2/js/plugins/datePicker/jquery-ui-1.10.4.datePicker.min.js') }}"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="{{ asset('vendor/sb-admin-v2/js/sb-admin.js') }}"></script>
@@ -130,75 +131,7 @@
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('vendor/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js') }}"></script>
+
+    <!-- Page-Level Custom Plugin Scripts -->
     <script src="{{ asset('js/plugins/plugins.js') }}"></script>
-
-    <script src="{{ asset('vendor/sb-admin-v2/js/plugins/datePicker/jquery-ui-1.10.4.datePicker.min.js') }}"></script>
-
-    <!-- Page-Level Plugin - DataTables -->
-    <script>
-        // DataTables configuration
-        $(document).ready(function() {
-            $('#expensesTable').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bInfo": true,
-                "iDisplayLength": 10,
-                "aaSorting": [[1, 'desc']],
-                "aoColumns": [
-                    { "aTargets": [ 0 ], "bSortable": true },
-                    { "aTargets": [ 1 ], "bSortable": true, "sType": "date-eu" },
-                    { "aTargets": [ 2 ], "bSortable": true },
-                    { "aTargets": [ 3 ], "bSortable": true },
-                    { "aTargets": [ 4 ], "bSortable": true },
-                    { "aTargets": [ 5 ], "bSortable": false }
-                ]
-            });
-        });
-
-        // Here you can hide table's search bar ( DataTables )
-        //    $('#expensesTable_filter').hide();
-        $(document).ready(function() {
-            $('#mainSearch').keyup(function () {
-                oTable.fnFilter($(this).val());
-            });
-        });
-
-        // Input file helper
-        $(document).on('change', '.btn-file :file', function () {
-            var input = $(this),
-                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [numFiles, label]);
-        });
-
-        // Input file helper
-        $(document).ready(function () {
-            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
-
-                var input = $(this).parents('.input-group').find(':text'),
-                    log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-                if (input.length) {
-                    input.val(log);
-                } else {
-                    if (log) alert(log);
-                }
-
-            });
-        });
-
-        // DatePicker (from jQuery UI)
-        $('input[name = date]').datepicker({
-            dateFormat: 'dd.mm.yy',
-            firstDay: 1,
-            showWeek: true,
-            changeMonth: true,
-            changeYear: true,
-            showOtherMonths: true,
-            selectOtherMonths: true
-        });
-
-        // bootstrap-progressbar v0.7.1
-        $('.progress .progress-bar').progressbar();
-    </script>
 @stop
